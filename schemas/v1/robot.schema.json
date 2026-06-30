@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/NuclearVenom/bulletlab-arsenal/main/schemas/v1/robot.schema.json",
+  "title": "BulletLab Arsenal Robot Package Metadata",
+  "description": "Schema for metadata.json files in BulletLab Arsenal robot packages. A single package may contain multiple robot models (e.g. different DOF variants of the same family) sharing one set of meshes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "display_name",
+    "description",
+    "version",
+    "arsenal_version",
+    "source",
+    "license",
+    "authors",
+    "maintainers",
+    "tags",
+    "minimum_bulletlab_version",
+    "models"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique package identifier. Must match the directory name exactly. Lowercase alphanumeric and underscores only.",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Human-readable name of the robot family (e.g. 'Unitree G1', 'Clearpath Husky').",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "description": "Short paragraph describing the robot family, its kinematic structure, and intended use cases.",
+      "minLength": 10
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of this Arsenal package (e.g. '1.0.0'). Increment on any change to URDF, meshes, or metadata.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "arsenal_version": {
+      "type": "string",
+      "description": "Version of the Arsenal package specification this metadata conforms to. Used for schema migration. Currently must be '1'.",
+      "enum": ["1"]
+    },
+    "source": {
+      "type": "string",
+      "description": "URL of the upstream source repository or original CAD file release.",
+      "format": "uri"
+    },
+    "license": {
+      "type": "string",
+      "description": "SPDX license identifier for the robot assets (e.g. 'MIT', 'Apache-2.0', 'BSD-2-Clause'). Must match the LICENSE file in the package. Complex or non-SPDX licenses should be noted here and explained fully in NOTICE.md."
+    },
+    "authors": {
+      "type": "array",
+      "description": "Original authors or creators of the robot description. Preserve upstream attributions accurately.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "maintainers": {
+      "type": "array",
+      "description": "People responsible for maintaining this Arsenal package. Typically the contributor(s) who ported the robot.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "tags": {
+      "type": "array",
+      "description": "Discovery tags for the package. Use lowercase, hyphenated terms (e.g. 'wheeled', 'legged', 'differential-drive', 'humanoid', 'arm', 'mobile').",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9_\\-]+$"
+      },
+      "minItems": 1
+    },
+    "minimum_bulletlab_version": {
+      "type": "string",
+      "description": "BulletLab version requirement (e.g., '>=0.2.0'). Must be tested against the specified version."
+    },
+    "models": {
+      "type": "array",
+      "description": "List of all robot models contained in this package. A package must define at least one model. Exactly one model must have 'default': true.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "description": "A single installable robot model within the package.",
+        "additionalProperties": false,
+        "required": ["id", "display_name", "entrypoint"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for this model within the package (e.g. '29dof', 'standard', 'lite'). Lowercase alphanumeric and underscores only.",
+            "pattern": "^[a-z0-9_]+$"
+          },
+          "display_name": {
+            "type": "string",
+            "description": "Human-readable name for this specific model variant (e.g. '29 DOF', 'Standard', 'Lite').",
+            "minLength": 1
+          },
+          "entrypoint": {
+            "type": "string",
+            "description": "Path to the URDF file for this model, relative to the package root. Must begin with 'urdf/' (e.g. 'urdf/robot_29dof.urdf').",
+            "pattern": "^urdf/.+\\.urdf$"
+          },
+          "default": {
+            "type": "boolean",
+            "description": "If true, this model is loaded when no specific model ID is requested. Exactly one model per package must set this to true."
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional short description specific to this model variant."
+          }
+        }
+      }
+    }
+  }
+}

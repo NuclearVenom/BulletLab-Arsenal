@@ -1,0 +1,341 @@
+{
+  "package": "example",
+  "verification_timestamp": "2026-06-29T10:03:06.024328+00:00",
+  "bulletlab_version": "0.1.4",
+  "models": [
+    {
+      "model_id": "default",
+      "model_display_name": "BLem1",
+      "entrypoint": "urdf/BLem1.urdf",
+      "loading": {
+        "status": "PASS"
+      },
+      "placement": {
+        "final_base_position": [
+          0.25,
+          0.0,
+          0.20487670288085938
+        ],
+        "lift_applied_meters": 0.174777
+      },
+      "dimensions_meters": {
+        "width_x": 0.596,
+        "depth_y": 0.7228,
+        "height_z": 0.6503
+      },
+      "links": [
+        {
+          "name": "base_link",
+          "index": -1,
+          "parent": null
+        },
+        {
+          "name": "neck",
+          "index": 0,
+          "parent": "base_link"
+        },
+        {
+          "name": "head",
+          "index": 1,
+          "parent": "neck"
+        },
+        {
+          "name": "leg2",
+          "index": 2,
+          "parent": "base_link"
+        },
+        {
+          "name": "wheel2",
+          "index": 3,
+          "parent": "leg2"
+        },
+        {
+          "name": "leg4",
+          "index": 4,
+          "parent": "base_link"
+        },
+        {
+          "name": "wheel4",
+          "index": 5,
+          "parent": "leg4"
+        },
+        {
+          "name": "leg1",
+          "index": 6,
+          "parent": "base_link"
+        },
+        {
+          "name": "wheel1",
+          "index": 7,
+          "parent": "leg1"
+        },
+        {
+          "name": "leg3",
+          "index": 8,
+          "parent": "base_link"
+        },
+        {
+          "name": "wheel3",
+          "index": 9,
+          "parent": "leg3"
+        }
+      ],
+      "joints": [
+        {
+          "name": "neck_yaw",
+          "index": 0,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "head_pitch",
+          "index": 1,
+          "type": "revolute",
+          "lower_limit": -0.5,
+          "upper_limit": 0.5,
+          "max_force": 100.0,
+          "max_velocity": 100.0
+        },
+        {
+          "name": "front_right_leg",
+          "index": 2,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "front_right_wheel",
+          "index": 3,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "front_left_leg",
+          "index": 4,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "front_left_wheel",
+          "index": 5,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "rear_right_leg",
+          "index": 6,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "rear_right_wheel",
+          "index": 7,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "rear_left_leg",
+          "index": 8,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "rear_left_wheel",
+          "index": 9,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        }
+      ],
+      "joint_exercise": [
+        {
+          "joint_name": "neck_yaw",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "head_pitch",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "front_right_leg",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "front_right_wheel",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "front_left_leg",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "front_left_wheel",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "rear_right_leg",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "rear_right_wheel",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "rear_left_leg",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "rear_left_wheel",
+          "status": "PASS",
+          "errors": []
+        }
+      ],
+      "stability": {
+        "steps_run": 60,
+        "nan_detected": false,
+        "status": "PASS"
+      },
+      "screenshots": [
+        {
+          "view": "front",
+          "path": "front.png",
+          "camera": {
+            "distance": 2.851,
+            "yaw": 0.0,
+            "pitch": -20.0,
+            "target": [
+              0.25,
+              0.0584,
+              0.3301
+            ]
+          }
+        },
+        {
+          "view": "rear",
+          "path": "rear.png",
+          "camera": {
+            "distance": 2.851,
+            "yaw": 180.0,
+            "pitch": -20.0,
+            "target": [
+              0.25,
+              0.0584,
+              0.3301
+            ]
+          }
+        },
+        {
+          "view": "left",
+          "path": "left.png",
+          "camera": {
+            "distance": 2.851,
+            "yaw": 90.0,
+            "pitch": -20.0,
+            "target": [
+              0.25,
+              0.0584,
+              0.3301
+            ]
+          }
+        },
+        {
+          "view": "right",
+          "path": "right.png",
+          "camera": {
+            "distance": 2.851,
+            "yaw": 270.0,
+            "pitch": -20.0,
+            "target": [
+              0.25,
+              0.0584,
+              0.3301
+            ]
+          }
+        },
+        {
+          "view": "top",
+          "path": "top.png",
+          "camera": {
+            "distance": 2.851,
+            "yaw": 0.0,
+            "pitch": -89.0,
+            "target": [
+              0.25,
+              0.0584,
+              0.3301
+            ]
+          }
+        },
+        {
+          "view": "perspective",
+          "path": "perspective.png",
+          "camera": {
+            "distance": 2.851,
+            "yaw": 45.0,
+            "pitch": -30.0,
+            "target": [
+              0.25,
+              0.0584,
+              0.3301
+            ]
+          }
+        },
+        {
+          "view": "isometric",
+          "path": "isometric.png",
+          "camera": {
+            "distance": 2.851,
+            "yaw": 35.26,
+            "pitch": -30.0,
+            "target": [
+              0.25,
+              0.0584,
+              0.3301
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "loading": "PASS",
+        "stability": "PASS",
+        "joint_exercise": "PASS",
+        "overall": "PASS"
+      }
+    }
+  ],
+  "overall": "PASS"
+}

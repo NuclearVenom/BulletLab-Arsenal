@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/NuclearVenom/bulletlab-arsenal/main/schemas/v1/robot.schema.json",
+  "name": "reference_bot",
+  "display_name": "BLem1",
+  "description": "BLem1 (BulletLab Example Model 1) is a four-wheeled rover with folding legs and a pan-tilt head.",
+  "version": "1.0.0",
+  "arsenal_version": "1",
+  "source": "https://github.com/NuclearVenom/BLem1",
+  "license": "MIT",
+  "authors": [
+    "Ranasurya Ghosh"
+  ],
+  "maintainers": [
+    "Ranasurya Ghosh"
+  ],
+  "tags": [
+    "reference",
+    "rover",
+    "wheeled",
+    "legged",
+    "mobile",
+    "template"
+  ],
+  "minimum_bulletlab_version": ">=0.2.0",
+  "models": [
+    {
+      "id": "default",
+      "display_name": "BLem1",
+      "entrypoint": "urdf/BLem1.urdf",
+      "default": true,
+      "description": "Four-wheeled rover with four folding legs and a pan-tilt head."
+    }
+  ]
+}
