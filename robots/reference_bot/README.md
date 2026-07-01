@@ -27,7 +27,7 @@ BLem1 is a compact four-wheeled rover with a distinctive mechanical design:
 ## Package Structure
 
 ```text
-example/
+reference_bot/
 ├── metadata.json
 ├── LICENSE
 ├── NOTICE.md

@@ -303,7 +303,42 @@ This policy ensures the Arsenal registry does not inadvertently include copyleft
 - `1` — one or more hard failures
 - `2` — one or more packages require Founder Review
 
-### Layer 2 — BulletLab Verification
+### Layer 2 — Repository Identity Validation
+
+**Module:** `scripts/verification/identity.py`
+
+**Question answered:** Does every package and model have a unique, unambiguous identity across the entire repository?
+
+This layer runs once across the full Arsenal before robot verification begins. It guarantees that future install APIs such as `Robot.install("unitree_g1")` always resolve to exactly one package.
+
+| Check | Scope |
+|---|---|
+| Package name format | Per-package: valid characters, no whitespace |
+| Reserved name rejection | Per-package: names from a fixed deny-list are rejected |
+| Metadata name ↔ folder | Per-package: `metadata["name"]` must equal the directory name |
+| Category-level uniqueness | Per-category: no duplicate folder names |
+| Global namespace uniqueness | Cross-category: names must be unique across ALL categories |
+| Display name advisory | Global warning if two packages share a `display_name` |
+| Model ID uniqueness | Per-package: no duplicate model `id` values |
+| Model display_name advisory | Per-package warning for shared model display names |
+| Model entrypoint uniqueness | Per-package: no two models may share an entrypoint |
+| Entrypoint validity | Per-package: path exists, inside `urdf/`, cannot escape the root |
+| URDF coverage | Per-package: every `.urdf` in `urdf/` belongs to exactly one model |
+| Manifest consistency | Global: generated manifests match the on-disk package set |
+| Install namespace simulation | Global: `Arsenal.install(name)` resolves to exactly one target |
+
+**Reserved package names:**
+
+The following names are permanently reserved and can never be used as a package identifier:
+
+```
+robots, worlds, sensors, controllers, datasets, benchmarks,
+install, fetch, verification, manifest, metadata, license,
+readme, package, schema, scripts, docs, src,
+arsenal, registry, index, core
+```
+
+### Layer 3 — BulletLab Verification
 
 **Module:** `scripts/verification/robot.py`
 
@@ -329,7 +364,7 @@ For each model in `metadata.json`:
 
 **Script:** `scripts/run_verification.py`
 
-This is the single entry point for GitHub Actions. It runs Layer 1 then Layer 2 in sequence and produces a master `verification_run_report.json` at the repository root.
+This is the single entry point for GitHub Actions. It runs all layers in sequence and produces a master `verification_run_report.json` at the repository root.
 
 ```bash
 # Verify a single package:
@@ -337,6 +372,9 @@ python scripts/run_verification.py robots/unitree_g1
 
 # Verify all packages (CI mode):
 python scripts/run_verification.py --all
+
+# Skip simulation (structure checks only):
+python scripts/run_verification.py robots/unitree_g1 --skip-simulation
 ```
 
 **Exit codes:**

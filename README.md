@@ -75,9 +75,9 @@ bulletlab-arsenal/
 
 </details>
 
-## Two-Layer Verification Pipeline
+## Three-Layer Verification Pipeline
 
-All packages go through a mandatory two-layer quality pipeline.
+All packages go through a mandatory three-layer quality pipeline.
 
 ### Layer 1 — Registry Validation
 
@@ -97,7 +97,21 @@ All packages go through a mandatory two-layer quality pipeline.
 - **Copyleft** (GPL, LGPL, AGPL) or **unknown**: triggers **Founder Review Required**. The package is not auto-merged; a maintainer reviews it manually.
 - **Missing or empty LICENSE**: hard failure.
 
-### Layer 2 — BulletLab Verification
+### Layer 2 — Repository Identity Validation
+
+**Module:** `scripts/verification/identity.py`
+
+**Question answered:** Does every package and model have a unique, unambiguous identity across the entire repository?
+
+This layer runs once across the entire Arsenal before any simulation begins. It ensures that future install APIs like `Robot.install("unitree_g1")` always resolve to exactly one package, with no ambiguity.
+
+- Every package name is globally unique across all categories (robots, worlds, sensors, etc.).
+- Package names are validated against a reserved-name deny-list.
+- Every model `id`, `display_name`, and `entrypoint` is unique within its package.
+- Every `.urdf` file in `urdf/` belongs to exactly one model entrypoint.
+- Install-API namespace simulation confirms zero naming conflicts.
+
+### Layer 3 — BulletLab Verification
 
 **Module:** `scripts/verification/robot.py`
 
@@ -137,6 +151,11 @@ python scripts/run_verification.py robots/reference_bot
 **Verify all packages (CI mode):**
 ```bash
 python scripts/run_verification.py --all
+```
+
+**Structure check only (no simulation):**
+```bash
+python scripts/run_verification.py robots/reference_bot --skip-simulation
 ```
 
 ## Documentation

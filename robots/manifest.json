@@ -4,7 +4,7 @@
   "package_count": 1,
   "packages": [
     {
-      "package_name": "example",
+      "package_name": "reference_bot",
       "display_name": "BLem1",
       "description": "BLem1 (BulletLab Example Model 1) is a four-wheeled rover with folding legs and a pan-tilt head.",
       "version": "1.0.0",
@@ -13,7 +13,7 @@
       "bulletlab_version": ">=0.2.0",
       "source": "https://github.com/NuclearVenom/bulletlab-arsenal",
       "tags": [
-        "example",
+        "reference_bot",
         "rover",
         "wheeled",
         "legged",
