@@ -1,0 +1,245 @@
+{
+  "package": "dex1_1",
+  "verification_timestamp": "2026-07-12T08:22:12.433392+00:00",
+  "bulletlab_version": "0.2.1",
+  "models": [
+    {
+      "model_id": "dex1_1",
+      "model_display_name": "dex1 1",
+      "entrypoint": "urdf/dex1_1.urdf",
+      "loading": {
+        "status": "PASS"
+      },
+      "placement": {
+        "final_base_position": [
+          0.0001178,
+          0.036886,
+          0.05109740014901161
+        ],
+        "lift_applied_meters": 0.043
+      },
+      "dimensions_meters": {
+        "width_x": 0.0871,
+        "depth_y": 0.1533,
+        "height_z": 0.13
+      },
+      "links": [
+        {
+          "name": "base_link",
+          "index": -1,
+          "parent": null
+        },
+        {
+          "name": "Link1_1",
+          "index": 0,
+          "parent": "base_link"
+        },
+        {
+          "name": "Link1_2",
+          "index": 1,
+          "parent": "Link1_1"
+        },
+        {
+          "name": "Link1_3",
+          "index": 2,
+          "parent": "Link1_2"
+        },
+        {
+          "name": "Link2_1",
+          "index": 3,
+          "parent": "base_link"
+        },
+        {
+          "name": "Link2_2",
+          "index": 4,
+          "parent": "Link2_1"
+        },
+        {
+          "name": "Link2_3",
+          "index": 5,
+          "parent": "Link2_2"
+        }
+      ],
+      "joints": [
+        {
+          "name": "Joint1_1",
+          "index": 0,
+          "type": "prismatic",
+          "lower_limit": -0.02,
+          "upper_limit": 0.0245,
+          "max_force": 20.0,
+          "max_velocity": 0.2
+        },
+        {
+          "name": "Joint1_2",
+          "index": 1,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "Joint1_3",
+          "index": 2,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "Joint2_1",
+          "index": 3,
+          "type": "prismatic",
+          "lower_limit": -0.02,
+          "upper_limit": 0.0245,
+          "max_force": 20.0,
+          "max_velocity": 0.2
+        },
+        {
+          "name": "Joint2_2",
+          "index": 4,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "Joint2_3",
+          "index": 5,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        }
+      ],
+      "joint_exercise": [
+        {
+          "joint_name": "Joint1_1",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Joint2_1",
+          "status": "PASS",
+          "errors": []
+        }
+      ],
+      "stability": {
+        "steps_run": 60,
+        "nan_detected": false,
+        "status": "PASS"
+      },
+      "screenshots": [
+        {
+          "view": "front",
+          "path": "front.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 0.0,
+            "pitch": -20.0,
+            "target": [
+              0.0,
+              0.0736,
+              0.07
+            ]
+          }
+        },
+        {
+          "view": "rear",
+          "path": "rear.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 180.0,
+            "pitch": -20.0,
+            "target": [
+              0.0,
+              0.0736,
+              0.07
+            ]
+          }
+        },
+        {
+          "view": "left",
+          "path": "left.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 90.0,
+            "pitch": -20.0,
+            "target": [
+              0.0,
+              0.0736,
+              0.07
+            ]
+          }
+        },
+        {
+          "view": "right",
+          "path": "right.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 270.0,
+            "pitch": -20.0,
+            "target": [
+              0.0,
+              0.0736,
+              0.07
+            ]
+          }
+        },
+        {
+          "view": "top",
+          "path": "top.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 0.0,
+            "pitch": -89.0,
+            "target": [
+              0.0,
+              0.0736,
+              0.07
+            ]
+          }
+        },
+        {
+          "view": "perspective",
+          "path": "perspective.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 45.0,
+            "pitch": -30.0,
+            "target": [
+              0.0,
+              0.0736,
+              0.07
+            ]
+          }
+        },
+        {
+          "view": "isometric",
+          "path": "isometric.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 35.26,
+            "pitch": -30.0,
+            "target": [
+              0.0,
+              0.0736,
+              0.07
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "loading": "PASS",
+        "stability": "PASS",
+        "joint_exercise": "PASS",
+        "overall": "PASS"
+      }
+    }
+  ],
+  "overall": "PASS"
+}

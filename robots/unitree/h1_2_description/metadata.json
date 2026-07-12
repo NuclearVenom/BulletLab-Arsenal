@@ -1,0 +1,50 @@
+{
+  "name": "h1_2_description",
+  "display_name": "H1 2 Description",
+  "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
+  "version": "1.0.0",
+  "arsenal_version": "1",
+  "source": "https://github.com/unitreerobotics/unitree_ros/tree/master/robots",
+  "license": "BSD-3-Clause",
+  "authors": [
+    "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+    "Unitree Robotics"
+  ],
+  "maintainers": [
+    "BulletLab Forge"
+  ],
+  "tags": [
+    "ros",
+    "gazebo",
+    "simulation",
+    "robotics",
+    "unitree",
+    "urdf",
+    "low-level-control",
+    "robot-description"
+  ],
+  "minimum_bulletlab_version": ">=0.1.0",
+  "models": [
+    {
+      "id": "h1_2",
+      "display_name": "h1 2",
+      "entrypoint": "urdf/h1_2.urdf",
+      "description": "Generated from h1_2.urdf",
+      "default": true
+    },
+    {
+      "id": "h1_2_handless",
+      "display_name": "h1 2 handless",
+      "entrypoint": "urdf/h1_2_handless.urdf",
+      "description": "Generated from h1_2_handless.urdf",
+      "default": false
+    },
+    {
+      "id": "h1_2_with_ftp_hand",
+      "display_name": "h1 2 with FTP hand",
+      "entrypoint": "urdf/h1_2_with_FTP_hand.urdf",
+      "description": "Generated from h1_2_with_FTP_hand.urdf",
+      "default": false
+    }
+  ]
+}

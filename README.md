@@ -139,24 +139,76 @@ BulletLab Arsenal features an automatically generated machine-readable manifest 
 > [!WARNING]
 > **Contributors must NEVER edit manifest files manually.** Manifests are generated entirely by the master verification pipeline. If you submit a pull request with manual edits to `manifest.json` or `arsenal-manifest.json`, your changes will be overwritten or rejected. The verification pipeline preserves your contribution history automatically.
 
-## Running the Pipeline
+## Arsenal CLI
 
-The master verification script (`scripts/run_verification.py`) is the official orchestrator and the only public entry point for verification.
+BulletLab Arsenal ships as an installable Python package with a `arsenal` command available system-wide after a single install step.
+
+**Install once (from the repository root):**
+```bash
+pip install -e .
+```
+
+Then from any terminal, from any directory:
 
 **Verify a single package:**
 ```bash
-python scripts/run_verification.py robots/reference_bot
+arsenal verify robots/reference_bot
+arsenal verify C:\path\to\robot_package
 ```
 
 **Verify all packages (CI mode):**
 ```bash
-python scripts/run_verification.py --all
+arsenal verify-all
 ```
 
-**Structure check only (no simulation):**
+**Structure check only — no simulation required:**
 ```bash
+arsenal verify robots/reference_bot --skip-simulation
+```
+
+**Identity and registry validation only:**
+```bash
+arsenal validate robots/reference_bot
+arsenal validate --all
+```
+
+**Regenerate all manifests:**
+```bash
+arsenal manifest
+```
+
+**Show repository info and package counts:**
+```bash
+arsenal info
+```
+
+**Print version:**
+```bash
+arsenal --version
+```
+
+**Command help:**
+```bash
+arsenal --help
+arsenal verify --help
+arsenal validate --help
+```
+
+> [!NOTE]
+> `arsenal verify --skip-simulation` runs Layers 1 and 2 only (structure and identity validation). It works with no PyBullet or BulletLab installation. Full simulation (Layer 3) requires PyBullet: `pip install -e .[simulation]`.
+
+<details>
+<summary><b>Alternative: run the orchestrator script directly (CI / no install)</b></summary>
+
+The master verification script remains available for environments where `pip install` is not possible (e.g., lightweight CI containers):
+
+```bash
+python scripts/run_verification.py robots/reference_bot
+python scripts/run_verification.py --all
 python scripts/run_verification.py robots/reference_bot --skip-simulation
 ```
+
+</details>
 
 ## Documentation
 

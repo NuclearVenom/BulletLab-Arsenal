@@ -1,0 +1,67 @@
+{
+  "name": "g1_description",
+  "display_name": "G1 Description",
+  "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
+  "version": "1.0.0",
+  "arsenal_version": "1",
+  "source": "https://github.com/unitreerobotics/unitree_ros/tree/master/robots",
+  "license": "BSD-3-Clause",
+  "authors": [
+    "HangZhou YuShu TECHNOLOGY CO.,LTD."
+  ],
+  "maintainers": [
+    "BulletLab Forge"
+  ],
+  "tags": [
+    "ros",
+    "simulation",
+    "gazebo",
+    "unitree",
+    "robotics"
+  ],
+  "minimum_bulletlab_version": ">=0.1.0",
+  "models": [
+    {
+      "id": "g1_23dof",
+      "display_name": "g1 23dof",
+      "entrypoint": "urdf/g1_23dof.urdf",
+      "description": "Generated from g1_23dof.urdf",
+      "default": true
+    },
+    {
+      "id": "g1_23dof_rev_1_0",
+      "display_name": "g1 23dof rev 1 0",
+      "entrypoint": "urdf/g1_23dof_rev_1_0.urdf",
+      "description": "Generated from g1_23dof_rev_1_0.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof",
+      "display_name": "g1 29dof",
+      "entrypoint": "urdf/g1_29dof.urdf",
+      "description": "Generated from g1_29dof.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_rev_1_0",
+      "display_name": "g1 29dof rev 1 0",
+      "entrypoint": "urdf/g1_29dof_rev_1_0.urdf",
+      "description": "Generated from g1_29dof_rev_1_0.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_with_hand",
+      "display_name": "g1 29dof with hand",
+      "entrypoint": "urdf/g1_29dof_with_hand.urdf",
+      "description": "Generated from g1_29dof_with_hand.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_with_hand_rev_1_0",
+      "display_name": "g1 29dof with hand rev 1 0",
+      "entrypoint": "urdf/g1_29dof_with_hand_rev_1_0.urdf",
+      "description": "Generated from g1_29dof_with_hand_rev_1_0.urdf",
+      "default": false
+    }
+  ]
+}

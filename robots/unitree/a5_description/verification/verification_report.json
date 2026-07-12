@@ -1,0 +1,398 @@
+{
+  "package": "a5_description",
+  "verification_timestamp": "2026-07-12T08:20:55.392678+00:00",
+  "bulletlab_version": "0.2.1",
+  "models": [
+    {
+      "model_id": "a5",
+      "model_display_name": "A5",
+      "entrypoint": "urdf/A5.urdf",
+      "loading": {
+        "status": "PASS"
+      },
+      "placement": {
+        "final_base_position": [
+          0.0,
+          0.0,
+          0.04444274992701113
+        ],
+        "lift_applied_meters": 0.063525
+      },
+      "dimensions_meters": {
+        "width_x": 0.3751,
+        "depth_y": 0.3827,
+        "height_z": 0.5019
+      },
+      "links": [
+        {
+          "name": "pelvis_link",
+          "index": -1,
+          "parent": null
+        },
+        {
+          "name": "waist_yaw_link",
+          "index": 0,
+          "parent": "pelvis_link"
+        },
+        {
+          "name": "left_shoulder_pitch_link",
+          "index": 1,
+          "parent": "waist_yaw_link"
+        },
+        {
+          "name": "left_shoulder_roll_link",
+          "index": 2,
+          "parent": "left_shoulder_pitch_link"
+        },
+        {
+          "name": "left_shoulder_yaw_link",
+          "index": 3,
+          "parent": "left_shoulder_roll_link"
+        },
+        {
+          "name": "left_elbow_link",
+          "index": 4,
+          "parent": "left_shoulder_yaw_link"
+        },
+        {
+          "name": "left_wrist_roll_link",
+          "index": 5,
+          "parent": "left_elbow_link"
+        },
+        {
+          "name": "right_shoulder_pitch_link",
+          "index": 6,
+          "parent": "waist_yaw_link"
+        },
+        {
+          "name": "right_shoulder_roll_link",
+          "index": 7,
+          "parent": "right_shoulder_pitch_link"
+        },
+        {
+          "name": "right_shoulder_yaw_link",
+          "index": 8,
+          "parent": "right_shoulder_roll_link"
+        },
+        {
+          "name": "right_elbow_link",
+          "index": 9,
+          "parent": "right_shoulder_yaw_link"
+        },
+        {
+          "name": "right_wrist_roll_link",
+          "index": 10,
+          "parent": "right_elbow_link"
+        },
+        {
+          "name": "head_pitch_link",
+          "index": 11,
+          "parent": "waist_yaw_link"
+        },
+        {
+          "name": "head_yaw_link",
+          "index": 12,
+          "parent": "head_pitch_link"
+        }
+      ],
+      "joints": [
+        {
+          "name": "waist_yaw_joint",
+          "index": 0,
+          "type": "revolute",
+          "lower_limit": -2.618,
+          "upper_limit": 2.618,
+          "max_force": 60.0,
+          "max_velocity": 18.7
+        },
+        {
+          "name": "left_shoulder_pitch_joint",
+          "index": 1,
+          "type": "revolute",
+          "lower_limit": -3.1416,
+          "upper_limit": 2.0944,
+          "max_force": 60.0,
+          "max_velocity": 18.7
+        },
+        {
+          "name": "left_shoulder_roll_joint",
+          "index": 2,
+          "type": "revolute",
+          "lower_limit": -0.22689,
+          "upper_limit": 2.4784,
+          "max_force": 60.0,
+          "max_velocity": 18.7
+        },
+        {
+          "name": "left_shoulder_yaw_joint",
+          "index": 3,
+          "type": "revolute",
+          "lower_limit": -1.9199,
+          "upper_limit": 1.9199,
+          "max_force": 33.0,
+          "max_velocity": 52.4
+        },
+        {
+          "name": "left_elbow_joint",
+          "index": 4,
+          "type": "revolute",
+          "lower_limit": -0.97564,
+          "upper_limit": 2.1852,
+          "max_force": 33.0,
+          "max_velocity": 52.4
+        },
+        {
+          "name": "left_wrist_roll_joint",
+          "index": 5,
+          "type": "revolute",
+          "lower_limit": -1.9199,
+          "upper_limit": 1.9199,
+          "max_force": 33.0,
+          "max_velocity": 52.4
+        },
+        {
+          "name": "right_shoulder_pitch_joint",
+          "index": 6,
+          "type": "revolute",
+          "lower_limit": -3.1416,
+          "upper_limit": 2.0944,
+          "max_force": 60.0,
+          "max_velocity": 18.7
+        },
+        {
+          "name": "right_shoulder_roll_joint",
+          "index": 7,
+          "type": "revolute",
+          "lower_limit": -2.47849,
+          "upper_limit": 0.2268,
+          "max_force": 60.0,
+          "max_velocity": 18.7
+        },
+        {
+          "name": "right_shoulder_yaw_joint",
+          "index": 8,
+          "type": "revolute",
+          "lower_limit": -1.9199,
+          "upper_limit": 1.9199,
+          "max_force": 33.0,
+          "max_velocity": 52.4
+        },
+        {
+          "name": "right_elbow_joint",
+          "index": 9,
+          "type": "revolute",
+          "lower_limit": -0.97564,
+          "upper_limit": 2.1852,
+          "max_force": 33.0,
+          "max_velocity": 52.4
+        },
+        {
+          "name": "right_wrist_roll_joint",
+          "index": 10,
+          "type": "revolute",
+          "lower_limit": -1.9199,
+          "upper_limit": 1.9199,
+          "max_force": 33.0,
+          "max_velocity": 52.4
+        },
+        {
+          "name": "head_pitch_joint",
+          "index": 11,
+          "type": "revolute",
+          "lower_limit": -0.62832,
+          "upper_limit": 0.62832,
+          "max_force": 33.0,
+          "max_velocity": 52.4
+        },
+        {
+          "name": "head_yaw_joint",
+          "index": 12,
+          "type": "revolute",
+          "lower_limit": -2.0071,
+          "upper_limit": 2.0071,
+          "max_force": 0.86,
+          "max_velocity": 11.0
+        }
+      ],
+      "joint_exercise": [
+        {
+          "joint_name": "waist_yaw_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_shoulder_pitch_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_shoulder_roll_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_shoulder_yaw_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_elbow_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_wrist_roll_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_shoulder_pitch_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_shoulder_roll_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_shoulder_yaw_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_elbow_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_wrist_roll_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "head_pitch_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "head_yaw_joint",
+          "status": "PASS",
+          "errors": []
+        }
+      ],
+      "stability": {
+        "steps_run": 60,
+        "nan_detected": false,
+        "status": "PASS"
+      },
+      "screenshots": [
+        {
+          "view": "front",
+          "path": "front.png",
+          "camera": {
+            "distance": 1.8355,
+            "yaw": 0.0,
+            "pitch": -20.0,
+            "target": [
+              0.0865,
+              0.0,
+              0.256
+            ]
+          }
+        },
+        {
+          "view": "rear",
+          "path": "rear.png",
+          "camera": {
+            "distance": 1.8355,
+            "yaw": 180.0,
+            "pitch": -20.0,
+            "target": [
+              0.0865,
+              0.0,
+              0.256
+            ]
+          }
+        },
+        {
+          "view": "left",
+          "path": "left.png",
+          "camera": {
+            "distance": 1.8355,
+            "yaw": 90.0,
+            "pitch": -20.0,
+            "target": [
+              0.0865,
+              0.0,
+              0.256
+            ]
+          }
+        },
+        {
+          "view": "right",
+          "path": "right.png",
+          "camera": {
+            "distance": 1.8355,
+            "yaw": 270.0,
+            "pitch": -20.0,
+            "target": [
+              0.0865,
+              0.0,
+              0.256
+            ]
+          }
+        },
+        {
+          "view": "top",
+          "path": "top.png",
+          "camera": {
+            "distance": 1.8355,
+            "yaw": 0.0,
+            "pitch": -89.0,
+            "target": [
+              0.0865,
+              0.0,
+              0.256
+            ]
+          }
+        },
+        {
+          "view": "perspective",
+          "path": "perspective.png",
+          "camera": {
+            "distance": 1.8355,
+            "yaw": 45.0,
+            "pitch": -30.0,
+            "target": [
+              0.0865,
+              0.0,
+              0.256
+            ]
+          }
+        },
+        {
+          "view": "isometric",
+          "path": "isometric.png",
+          "camera": {
+            "distance": 1.8355,
+            "yaw": 35.26,
+            "pitch": -30.0,
+            "target": [
+              0.0865,
+              0.0,
+              0.256
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "loading": "PASS",
+        "stability": "PASS",
+        "joint_exercise": "PASS",
+        "overall": "PASS"
+      }
+    }
+  ],
+  "overall": "PASS"
+}

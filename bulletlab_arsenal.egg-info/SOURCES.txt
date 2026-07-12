@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+arsenal_tools/__init__.py
+arsenal_tools/_core.py
+arsenal_tools/cli.py
+bulletlab_arsenal.egg-info/PKG-INFO
+bulletlab_arsenal.egg-info/SOURCES.txt
+bulletlab_arsenal.egg-info/dependency_links.txt
+bulletlab_arsenal.egg-info/entry_points.txt
+bulletlab_arsenal.egg-info/requires.txt
+bulletlab_arsenal.egg-info/top_level.txt

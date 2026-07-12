@@ -1,0 +1,68 @@
+{
+  "package": "h1_2_description",
+  "verification_timestamp": "2026-07-12T08:27:56.959284+00:00",
+  "bulletlab_version": "0.2.1",
+  "models": [
+    {
+      "model_id": "h1_2",
+      "model_display_name": "h1 2",
+      "entrypoint": "urdf/h1_2.urdf",
+      "loading": {
+        "status": "FAIL",
+        "error": "Cannot load URDF file.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\ranas\\Desktop\\BulletLab Arsenal\\scripts\\verification\\robot.py\", line 187, in _verify_model\n    robot = Robot.load(str(urdf_path), sim=sim,\n  File \"C:\\Users\\ranas\\Desktop\\BulletLab\\bulletlab\\robot\\robot.py\", line 207, in load\n    body_id = p.loadURDF(\npybullet.error: Cannot load URDF file.\n"
+      },
+      "placement": {},
+      "dimensions_meters": {},
+      "links": [],
+      "joints": [],
+      "joint_exercise": [],
+      "stability": {},
+      "screenshots": [],
+      "summary": {
+        "overall": "FAIL"
+      }
+    },
+    {
+      "model_id": "h1_2_handless",
+      "model_display_name": "h1 2 handless",
+      "entrypoint": "urdf/h1_2_handless.urdf",
+      "loading": {
+        "status": "FAIL",
+        "error": "Cannot load URDF file.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\ranas\\Desktop\\BulletLab Arsenal\\scripts\\verification\\robot.py\", line 187, in _verify_model\n    robot = Robot.load(str(urdf_path), sim=sim,\n  File \"C:\\Users\\ranas\\Desktop\\BulletLab\\bulletlab\\robot\\robot.py\", line 207, in load\n    body_id = p.loadURDF(\npybullet.error: Cannot load URDF file.\n"
+      },
+      "placement": {},
+      "dimensions_meters": {},
+      "links": [],
+      "joints": [],
+      "joint_exercise": [],
+      "stability": {},
+      "screenshots": [],
+      "summary": {
+        "overall": "FAIL"
+      }
+    },
+    {
+      "model_id": "h1_2_with_ftp_hand",
+      "model_display_name": "h1 2 with FTP hand",
+      "entrypoint": "urdf/h1_2_with_FTP_hand.urdf",
+      "loading": {
+        "status": "FAIL",
+        "error": "Cannot load URDF file.",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\ranas\\Desktop\\BulletLab Arsenal\\scripts\\verification\\robot.py\", line 187, in _verify_model\n    robot = Robot.load(str(urdf_path), sim=sim,\n  File \"C:\\Users\\ranas\\Desktop\\BulletLab\\bulletlab\\robot\\robot.py\", line 207, in load\n    body_id = p.loadURDF(\npybullet.error: Cannot load URDF file.\n"
+      },
+      "placement": {},
+      "dimensions_meters": {},
+      "links": [],
+      "joints": [],
+      "joint_exercise": [],
+      "stability": {},
+      "screenshots": [],
+      "summary": {
+        "overall": "FAIL"
+      }
+    }
+  ],
+  "overall": "FAIL"
+}

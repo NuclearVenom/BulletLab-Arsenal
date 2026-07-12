@@ -20,6 +20,10 @@
     "models"
   ],
   "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "URL of the JSON schema."
+    },
     "name": {
       "type": "string",
       "description": "Unique package identifier. Must match the directory name exactly. Lowercase alphanumeric and underscores only.",

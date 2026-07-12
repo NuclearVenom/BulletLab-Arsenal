@@ -1,0 +1,58 @@
+[build-system]
+requires      = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name        = "bulletlab-arsenal"
+version     = "1.1.0"
+description = "BulletLab Arsenal — Official CLI for the BulletLab robotics asset ecosystem"
+readme      = "README.md"
+license     = { file = "LICENSE" }
+authors     = [{ name = "Ranasurya Ghosh" }]
+requires-python = ">=3.9"
+
+keywords = [
+    "robotics",
+    "simulation",
+    "urdf",
+    "pybullet",
+    "bulletlab",
+    "arsenal",
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Robotics",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+
+# The CLI has no mandatory third-party runtime dependencies.
+# PyBullet and BulletLab are optional; arsenal verify --skip-simulation
+# works without them.
+dependencies = []
+
+[project.optional-dependencies]
+simulation = [
+    "pybullet>=3.2",
+]
+
+[project.scripts]
+arsenal = "arsenal_tools.cli:main"
+
+[project.urls]
+Homepage      = "https://github.com/NuclearVenom/BulletLab-Arsenal"
+Repository    = "https://github.com/NuclearVenom/BulletLab-Arsenal"
+"Bug Tracker" = "https://github.com/NuclearVenom/BulletLab-Arsenal/issues"
+
+[tool.setuptools.packages.find]
+where   = ["."]
+include = ["arsenal_tools*"]

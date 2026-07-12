@@ -1,0 +1,53 @@
+{
+  "name": "inspire_hand",
+  "display_name": "Inspire Hand",
+  "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
+  "version": "1.0.0",
+  "arsenal_version": "1",
+  "source": "https://github.com/unitreerobotics/unitree_ros/tree/master/robots",
+  "license": "BSD-3-Clause",
+  "authors": [
+    "Unitree Robotics"
+  ],
+  "maintainers": [
+    "BulletLab Forge"
+  ],
+  "tags": [
+    "ros",
+    "urdf",
+    "robot-description",
+    "dexterous-hand",
+    "simulation"
+  ],
+  "minimum_bulletlab_version": ">=0.1.0",
+  "models": [
+    {
+      "id": "dfq_left_hand",
+      "display_name": "DFQ left hand",
+      "entrypoint": "urdf/DFQ_left_hand.urdf",
+      "description": "Generated from DFQ_left_hand.urdf",
+      "default": true
+    },
+    {
+      "id": "dfq_right_hand",
+      "display_name": "DFQ right hand",
+      "entrypoint": "urdf/DFQ_right_hand.urdf",
+      "description": "Generated from DFQ_right_hand.urdf",
+      "default": false
+    },
+    {
+      "id": "ftp_left_hand",
+      "display_name": "FTP left hand",
+      "entrypoint": "urdf/FTP_left_hand.urdf",
+      "description": "Generated from FTP_left_hand.urdf",
+      "default": false
+    },
+    {
+      "id": "ftp_right_hand",
+      "display_name": "FTP right hand",
+      "entrypoint": "urdf/FTP_right_hand.urdf",
+      "description": "Generated from FTP_right_hand.urdf",
+      "default": false
+    }
+  ]
+}

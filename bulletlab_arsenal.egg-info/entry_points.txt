@@ -1,0 +1,2 @@
+[console_scripts]
+arsenal = arsenal_tools.cli:main

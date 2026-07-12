@@ -1,0 +1,52 @@
+{
+  "name": "dex2_5",
+  "display_name": "Dex2 5",
+  "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
+  "version": "1.0.0",
+  "arsenal_version": "1",
+  "source": "https://github.com/unitreerobotics/unitree_ros/tree/master/robots",
+  "license": "BSD-3-Clause",
+  "authors": [
+    "Unitree Robotics"
+  ],
+  "maintainers": [
+    "BulletLab Forge"
+  ],
+  "tags": [
+    "robot",
+    "hand",
+    "dexterous",
+    "ros"
+  ],
+  "minimum_bulletlab_version": ">=0.1.0",
+  "models": [
+    {
+      "id": "left_hand",
+      "display_name": "Left Hand",
+      "entrypoint": "urdf/Left_Hand.urdf",
+      "description": "Generated from Left_Hand.urdf",
+      "default": true
+    },
+    {
+      "id": "left_hand_g1_5010_wrist",
+      "display_name": "Left Hand G1 5010 Wrist",
+      "entrypoint": "urdf/Left_Hand_G1_5010_Wrist.urdf",
+      "description": "Generated from Left_Hand_G1_5010_Wrist.urdf",
+      "default": false
+    },
+    {
+      "id": "right_hand",
+      "display_name": "Right Hand",
+      "entrypoint": "urdf/Right_Hand.urdf",
+      "description": "Generated from Right_Hand.urdf",
+      "default": false
+    },
+    {
+      "id": "right_hand_g1_5010_wrist",
+      "display_name": "Right Hand G1 5010 Wrist",
+      "entrypoint": "urdf/Right_Hand_G1_5010_Wrist.urdf",
+      "description": "Generated from Right_Hand_G1_5010_Wrist.urdf",
+      "default": false
+    }
+  ]
+}

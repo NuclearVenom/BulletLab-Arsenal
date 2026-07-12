@@ -1,0 +1,1368 @@
+{
+  "package": "dex2_5",
+  "verification_timestamp": "2026-07-12T08:22:27.868964+00:00",
+  "bulletlab_version": "0.2.1",
+  "models": [
+    {
+      "model_id": "left_hand",
+      "model_display_name": "Left Hand",
+      "entrypoint": "urdf/Left_Hand.urdf",
+      "loading": {
+        "status": "PASS"
+      },
+      "placement": {
+        "final_base_position": [
+          0.042305312,
+          -0.004043007,
+          0.04363672423369265
+        ],
+        "lift_applied_meters": 0.043124
+      },
+      "dimensions_meters": {
+        "width_x": 0.157,
+        "depth_y": 0.1034,
+        "height_z": 0.0762
+      },
+      "links": [
+        {
+          "name": "left_0_link",
+          "index": -1,
+          "parent": null
+        },
+        {
+          "name": "left_11_link",
+          "index": 0,
+          "parent": "left_0_link"
+        },
+        {
+          "name": "left_12_link",
+          "index": 1,
+          "parent": "left_11_link"
+        },
+        {
+          "name": "left_21_link",
+          "index": 2,
+          "parent": "left_0_link"
+        },
+        {
+          "name": "left_22_link",
+          "index": 3,
+          "parent": "left_21_link"
+        },
+        {
+          "name": "left_31_link",
+          "index": 4,
+          "parent": "left_0_link"
+        },
+        {
+          "name": "left_32_link",
+          "index": 5,
+          "parent": "left_31_link"
+        },
+        {
+          "name": "left_41_link",
+          "index": 6,
+          "parent": "left_0_link"
+        },
+        {
+          "name": "left_42_link",
+          "index": 7,
+          "parent": "left_41_link"
+        },
+        {
+          "name": "left_51_link",
+          "index": 8,
+          "parent": "left_0_link"
+        },
+        {
+          "name": "left_52_link",
+          "index": 9,
+          "parent": "left_51_link"
+        }
+      ],
+      "joints": [
+        {
+          "name": "left_11_joint",
+          "index": 0,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 0.7330382858,
+          "max_force": 2.5,
+          "max_velocity": 6.0
+        },
+        {
+          "name": "left_12_joint",
+          "index": 1,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.8325957145,
+          "max_force": 2.5,
+          "max_velocity": 6.0
+        },
+        {
+          "name": "left_21_joint",
+          "index": 2,
+          "type": "revolute",
+          "lower_limit": -1.5358897417,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_22_joint",
+          "index": 3,
+          "type": "revolute",
+          "lower_limit": -1.8325957145,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_31_joint",
+          "index": 4,
+          "type": "revolute",
+          "lower_limit": -1.5358897417,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_32_joint",
+          "index": 5,
+          "type": "revolute",
+          "lower_limit": -1.8325957145,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_41_joint",
+          "index": 6,
+          "type": "revolute",
+          "lower_limit": -1.5358897417,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_42_joint",
+          "index": 7,
+          "type": "revolute",
+          "lower_limit": -1.8325957145,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_51_joint",
+          "index": 8,
+          "type": "revolute",
+          "lower_limit": -1.5358897417,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_52_joint",
+          "index": 9,
+          "type": "revolute",
+          "lower_limit": -1.8325957145,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        }
+      ],
+      "joint_exercise": [
+        {
+          "joint_name": "left_11_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_12_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_21_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_22_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_31_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_32_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_41_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_42_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_51_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_52_joint",
+          "status": "PASS",
+          "errors": []
+        }
+      ],
+      "stability": {
+        "steps_run": 60,
+        "nan_detected": false,
+        "status": "PASS"
+      },
+      "screenshots": [
+        {
+          "view": "front",
+          "path": "front.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 0.0,
+            "pitch": -20.0,
+            "target": [
+              0.0755,
+              -0.0334,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "rear",
+          "path": "rear.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 180.0,
+            "pitch": -20.0,
+            "target": [
+              0.0755,
+              -0.0334,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "left",
+          "path": "left.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 90.0,
+            "pitch": -20.0,
+            "target": [
+              0.0755,
+              -0.0334,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "right",
+          "path": "right.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 270.0,
+            "pitch": -20.0,
+            "target": [
+              0.0755,
+              -0.0334,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "top",
+          "path": "top.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 0.0,
+            "pitch": -89.0,
+            "target": [
+              0.0755,
+              -0.0334,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "perspective",
+          "path": "perspective.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 45.0,
+            "pitch": -30.0,
+            "target": [
+              0.0755,
+              -0.0334,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "isometric",
+          "path": "isometric.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 35.26,
+            "pitch": -30.0,
+            "target": [
+              0.0755,
+              -0.0334,
+              0.0431
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "loading": "PASS",
+        "stability": "PASS",
+        "joint_exercise": "PASS",
+        "overall": "PASS"
+      }
+    },
+    {
+      "model_id": "left_hand_g1_5010_wrist",
+      "model_display_name": "Left Hand G1 5010 Wrist",
+      "entrypoint": "urdf/Left_Hand_G1_5010_Wrist.urdf",
+      "loading": {
+        "status": "PASS"
+      },
+      "placement": {
+        "final_base_position": [
+          0.02200381568,
+          0.00049485096,
+          0.04366265446369265
+        ],
+        "lift_applied_meters": 0.043124
+      },
+      "dimensions_meters": {
+        "width_x": 0.2185,
+        "depth_y": 0.112,
+        "height_z": 0.0762
+      },
+      "links": [
+        {
+          "name": "left_wrist_yaw_link",
+          "index": -1,
+          "parent": null
+        },
+        {
+          "name": "left_0_link",
+          "index": 0,
+          "parent": "left_wrist_yaw_link"
+        },
+        {
+          "name": "left_11_link",
+          "index": 1,
+          "parent": "left_0_link"
+        },
+        {
+          "name": "left_12_link",
+          "index": 2,
+          "parent": "left_11_link"
+        },
+        {
+          "name": "left_21_link",
+          "index": 3,
+          "parent": "left_0_link"
+        },
+        {
+          "name": "left_22_link",
+          "index": 4,
+          "parent": "left_21_link"
+        },
+        {
+          "name": "left_31_link",
+          "index": 5,
+          "parent": "left_0_link"
+        },
+        {
+          "name": "left_32_link",
+          "index": 6,
+          "parent": "left_31_link"
+        },
+        {
+          "name": "left_41_link",
+          "index": 7,
+          "parent": "left_0_link"
+        },
+        {
+          "name": "left_42_link",
+          "index": 8,
+          "parent": "left_41_link"
+        },
+        {
+          "name": "left_51_link",
+          "index": 9,
+          "parent": "left_0_link"
+        },
+        {
+          "name": "left_52_link",
+          "index": 10,
+          "parent": "left_51_link"
+        }
+      ],
+      "joints": [
+        {
+          "name": "left_0_joint",
+          "index": 0,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "left_11_joint",
+          "index": 1,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 0.7330382858,
+          "max_force": 2.5,
+          "max_velocity": 6.0
+        },
+        {
+          "name": "left_12_joint",
+          "index": 2,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.8325957145,
+          "max_force": 2.5,
+          "max_velocity": 6.0
+        },
+        {
+          "name": "left_21_joint",
+          "index": 3,
+          "type": "revolute",
+          "lower_limit": -1.5358897417,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_22_joint",
+          "index": 4,
+          "type": "revolute",
+          "lower_limit": -1.8325957145,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_31_joint",
+          "index": 5,
+          "type": "revolute",
+          "lower_limit": -1.5358897417,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_32_joint",
+          "index": 6,
+          "type": "revolute",
+          "lower_limit": -1.8325957145,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_41_joint",
+          "index": 7,
+          "type": "revolute",
+          "lower_limit": -1.5358897417,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_42_joint",
+          "index": 8,
+          "type": "revolute",
+          "lower_limit": -1.8325957145,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_51_joint",
+          "index": 9,
+          "type": "revolute",
+          "lower_limit": -1.5358897417,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "left_52_joint",
+          "index": 10,
+          "type": "revolute",
+          "lower_limit": -1.8325957145,
+          "upper_limit": 0.0,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        }
+      ],
+      "joint_exercise": [
+        {
+          "joint_name": "left_11_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_12_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_21_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_22_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_31_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_32_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_41_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_42_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_51_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "left_52_joint",
+          "status": "PASS",
+          "errors": []
+        }
+      ],
+      "stability": {
+        "steps_run": 60,
+        "nan_detected": false,
+        "status": "PASS"
+      },
+      "screenshots": [
+        {
+          "view": "front",
+          "path": "front.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 0.0,
+            "pitch": -20.0,
+            "target": [
+              0.0863,
+              -0.0291,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "rear",
+          "path": "rear.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 180.0,
+            "pitch": -20.0,
+            "target": [
+              0.0863,
+              -0.0291,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "left",
+          "path": "left.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 90.0,
+            "pitch": -20.0,
+            "target": [
+              0.0863,
+              -0.0291,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "right",
+          "path": "right.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 270.0,
+            "pitch": -20.0,
+            "target": [
+              0.0863,
+              -0.0291,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "top",
+          "path": "top.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 0.0,
+            "pitch": -89.0,
+            "target": [
+              0.0863,
+              -0.0291,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "perspective",
+          "path": "perspective.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 45.0,
+            "pitch": -30.0,
+            "target": [
+              0.0863,
+              -0.0291,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "isometric",
+          "path": "isometric.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 35.26,
+            "pitch": -30.0,
+            "target": [
+              0.0863,
+              -0.0291,
+              0.0431
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "loading": "PASS",
+        "stability": "PASS",
+        "joint_exercise": "PASS",
+        "overall": "PASS"
+      }
+    },
+    {
+      "model_id": "right_hand",
+      "model_display_name": "Right Hand",
+      "entrypoint": "urdf/Right_Hand.urdf",
+      "loading": {
+        "status": "PASS"
+      },
+      "placement": {
+        "final_base_position": [
+          0.042305312,
+          0.004043007,
+          0.04363672423369265
+        ],
+        "lift_applied_meters": 0.043124
+      },
+      "dimensions_meters": {
+        "width_x": 0.157,
+        "depth_y": 0.1034,
+        "height_z": 0.0762
+      },
+      "links": [
+        {
+          "name": "right_0_link",
+          "index": -1,
+          "parent": null
+        },
+        {
+          "name": "right_11_link",
+          "index": 0,
+          "parent": "right_0_link"
+        },
+        {
+          "name": "right_12_link",
+          "index": 1,
+          "parent": "right_11_link"
+        },
+        {
+          "name": "right_21_link",
+          "index": 2,
+          "parent": "right_0_link"
+        },
+        {
+          "name": "right_22_link",
+          "index": 3,
+          "parent": "right_21_link"
+        },
+        {
+          "name": "right_31_link",
+          "index": 4,
+          "parent": "right_0_link"
+        },
+        {
+          "name": "right_32_link",
+          "index": 5,
+          "parent": "right_31_link"
+        },
+        {
+          "name": "right_41_link",
+          "index": 6,
+          "parent": "right_0_link"
+        },
+        {
+          "name": "right_42_link",
+          "index": 7,
+          "parent": "right_41_link"
+        },
+        {
+          "name": "right_51_link",
+          "index": 8,
+          "parent": "right_0_link"
+        },
+        {
+          "name": "right_52_link",
+          "index": 9,
+          "parent": "right_51_link"
+        }
+      ],
+      "joints": [
+        {
+          "name": "right_11_joint",
+          "index": 0,
+          "type": "revolute",
+          "lower_limit": -0.7330382858,
+          "upper_limit": 0.0,
+          "max_force": 2.5,
+          "max_velocity": 6.0
+        },
+        {
+          "name": "right_12_joint",
+          "index": 1,
+          "type": "revolute",
+          "lower_limit": -1.8325957145,
+          "upper_limit": 0.0,
+          "max_force": 2.5,
+          "max_velocity": 6.0
+        },
+        {
+          "name": "right_21_joint",
+          "index": 2,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.5358897417,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_22_joint",
+          "index": 3,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.8325957145,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_31_joint",
+          "index": 4,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.5358897417,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_32_joint",
+          "index": 5,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.8325957145,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_41_joint",
+          "index": 6,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.5358897417,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_42_joint",
+          "index": 7,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.8325957145,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_51_joint",
+          "index": 8,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.5358897417,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_52_joint",
+          "index": 9,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.8325957145,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        }
+      ],
+      "joint_exercise": [
+        {
+          "joint_name": "right_11_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_12_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_21_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_22_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_31_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_32_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_41_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_42_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_51_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_52_joint",
+          "status": "PASS",
+          "errors": []
+        }
+      ],
+      "stability": {
+        "steps_run": 60,
+        "nan_detected": false,
+        "status": "PASS"
+      },
+      "screenshots": [
+        {
+          "view": "front",
+          "path": "front.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 0.0,
+            "pitch": -20.0,
+            "target": [
+              0.0755,
+              0.0334,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "rear",
+          "path": "rear.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 180.0,
+            "pitch": -20.0,
+            "target": [
+              0.0755,
+              0.0334,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "left",
+          "path": "left.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 90.0,
+            "pitch": -20.0,
+            "target": [
+              0.0755,
+              0.0334,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "right",
+          "path": "right.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 270.0,
+            "pitch": -20.0,
+            "target": [
+              0.0755,
+              0.0334,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "top",
+          "path": "top.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 0.0,
+            "pitch": -89.0,
+            "target": [
+              0.0755,
+              0.0334,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "perspective",
+          "path": "perspective.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 45.0,
+            "pitch": -30.0,
+            "target": [
+              0.0755,
+              0.0334,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "isometric",
+          "path": "isometric.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 35.26,
+            "pitch": -30.0,
+            "target": [
+              0.0755,
+              0.0334,
+              0.0431
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "loading": "PASS",
+        "stability": "PASS",
+        "joint_exercise": "PASS",
+        "overall": "PASS"
+      }
+    },
+    {
+      "model_id": "right_hand_g1_5010_wrist",
+      "model_display_name": "Right Hand G1 5010 Wrist",
+      "entrypoint": "urdf/Right_Hand_G1_5010_Wrist.urdf",
+      "loading": {
+        "status": "PASS"
+      },
+      "placement": {
+        "final_base_position": [
+          0.02200381568,
+          -0.00049485096,
+          0.04366265446369265
+        ],
+        "lift_applied_meters": 0.043124
+      },
+      "dimensions_meters": {
+        "width_x": 0.2185,
+        "depth_y": 0.112,
+        "height_z": 0.0762
+      },
+      "links": [
+        {
+          "name": "right_wrist_yaw_link",
+          "index": -1,
+          "parent": null
+        },
+        {
+          "name": "right_0_link",
+          "index": 0,
+          "parent": "right_wrist_yaw_link"
+        },
+        {
+          "name": "right_11_link",
+          "index": 1,
+          "parent": "right_0_link"
+        },
+        {
+          "name": "right_12_link",
+          "index": 2,
+          "parent": "right_11_link"
+        },
+        {
+          "name": "right_21_link",
+          "index": 3,
+          "parent": "right_0_link"
+        },
+        {
+          "name": "right_22_link",
+          "index": 4,
+          "parent": "right_21_link"
+        },
+        {
+          "name": "right_31_link",
+          "index": 5,
+          "parent": "right_0_link"
+        },
+        {
+          "name": "right_32_link",
+          "index": 6,
+          "parent": "right_31_link"
+        },
+        {
+          "name": "right_41_link",
+          "index": 7,
+          "parent": "right_0_link"
+        },
+        {
+          "name": "right_42_link",
+          "index": 8,
+          "parent": "right_41_link"
+        },
+        {
+          "name": "right_51_link",
+          "index": 9,
+          "parent": "right_0_link"
+        },
+        {
+          "name": "right_52_link",
+          "index": 10,
+          "parent": "right_51_link"
+        }
+      ],
+      "joints": [
+        {
+          "name": "right_0_joint",
+          "index": 0,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "right_11_joint",
+          "index": 1,
+          "type": "revolute",
+          "lower_limit": -0.7330382858,
+          "upper_limit": 0.0,
+          "max_force": 2.5,
+          "max_velocity": 6.0
+        },
+        {
+          "name": "right_12_joint",
+          "index": 2,
+          "type": "revolute",
+          "lower_limit": -1.8325957145,
+          "upper_limit": 0.0,
+          "max_force": 2.5,
+          "max_velocity": 6.0
+        },
+        {
+          "name": "right_21_joint",
+          "index": 3,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.5358897417,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_22_joint",
+          "index": 4,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.8325957145,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_31_joint",
+          "index": 5,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.5358897417,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_32_joint",
+          "index": 6,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.8325957145,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_41_joint",
+          "index": 7,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.5358897417,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_42_joint",
+          "index": 8,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.8325957145,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_51_joint",
+          "index": 9,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.5358897417,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        },
+        {
+          "name": "right_52_joint",
+          "index": 10,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.8325957145,
+          "max_force": 0.5,
+          "max_velocity": 8.0
+        }
+      ],
+      "joint_exercise": [
+        {
+          "joint_name": "right_11_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_12_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_21_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_22_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_31_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_32_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_41_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_42_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_51_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "right_52_joint",
+          "status": "PASS",
+          "errors": []
+        }
+      ],
+      "stability": {
+        "steps_run": 60,
+        "nan_detected": false,
+        "status": "PASS"
+      },
+      "screenshots": [
+        {
+          "view": "front",
+          "path": "front.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 0.0,
+            "pitch": -20.0,
+            "target": [
+              0.0863,
+              0.0291,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "rear",
+          "path": "rear.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 180.0,
+            "pitch": -20.0,
+            "target": [
+              0.0863,
+              0.0291,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "left",
+          "path": "left.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 90.0,
+            "pitch": -20.0,
+            "target": [
+              0.0863,
+              0.0291,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "right",
+          "path": "right.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 270.0,
+            "pitch": -20.0,
+            "target": [
+              0.0863,
+              0.0291,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "top",
+          "path": "top.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 0.0,
+            "pitch": -89.0,
+            "target": [
+              0.0863,
+              0.0291,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "perspective",
+          "path": "perspective.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 45.0,
+            "pitch": -30.0,
+            "target": [
+              0.0863,
+              0.0291,
+              0.0431
+            ]
+          }
+        },
+        {
+          "view": "isometric",
+          "path": "isometric.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 35.26,
+            "pitch": -30.0,
+            "target": [
+              0.0863,
+              0.0291,
+              0.0431
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "loading": "PASS",
+        "stability": "PASS",
+        "joint_exercise": "PASS",
+        "overall": "PASS"
+      }
+    }
+  ],
+  "overall": "PASS"
+}

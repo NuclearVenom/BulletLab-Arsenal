@@ -1,0 +1,41 @@
+{
+  "name": "aliengo_description",
+  "display_name": "Aliengo Description",
+  "description": "The aliengo_description package",
+  "version": "0.0.0",
+  "arsenal_version": "1",
+  "source": "https://github.com/unitreerobotics/unitree_ros/tree/master/robots",
+  "license": "BSD-3-Clause",
+  "authors": [
+    "HangZhou YuShu TECHNOLOGY CO.,LTD."
+  ],
+  "maintainers": [
+    "BulletLab Forge",
+    "unitree <aliengo@unitree.cc>"
+  ],
+  "tags": [
+    "ros",
+    "gazebo",
+    "simulation",
+    "robot-description",
+    "controller",
+    "unitree"
+  ],
+  "minimum_bulletlab_version": ">=0.1.0",
+  "models": [
+    {
+      "id": "aliengo",
+      "display_name": "aliengo",
+      "entrypoint": "urdf/aliengo.urdf",
+      "description": "Generated from aliengo.urdf",
+      "default": true
+    },
+    {
+      "id": "robot",
+      "display_name": "robot",
+      "entrypoint": "urdf/robot.urdf",
+      "description": "Generated from robot.xacro",
+      "default": false
+    }
+  ]
+}

@@ -1,0 +1,531 @@
+{
+  "package": "dex5_urdf_r",
+  "verification_timestamp": "2026-07-12T08:24:55.866914+00:00",
+  "bulletlab_version": "0.2.1",
+  "models": [
+    {
+      "model_id": "dex5_urdf_r",
+      "model_display_name": "Dex5 URDF R",
+      "entrypoint": "urdf/Dex5-URDF-R.urdf",
+      "loading": {
+        "status": "PASS"
+      },
+      "placement": {
+        "final_base_position": [
+          -0.023027,
+          0.027982,
+          0.04089332887840271
+        ],
+        "lift_applied_meters": 0.058071
+      },
+      "dimensions_meters": {
+        "width_x": 0.205,
+        "depth_y": 0.2171,
+        "height_z": 0.0869
+      },
+      "links": [
+        {
+          "name": "base_link00",
+          "index": -1,
+          "parent": null
+        },
+        {
+          "name": "Link_11R",
+          "index": 0,
+          "parent": "base_link00"
+        },
+        {
+          "name": "Link_12R",
+          "index": 1,
+          "parent": "Link_11R"
+        },
+        {
+          "name": "Link_13R",
+          "index": 2,
+          "parent": "Link_12R"
+        },
+        {
+          "name": "Link_14R",
+          "index": 3,
+          "parent": "Link_13R"
+        },
+        {
+          "name": "Link_21R",
+          "index": 4,
+          "parent": "base_link00"
+        },
+        {
+          "name": "Link_22R",
+          "index": 5,
+          "parent": "Link_21R"
+        },
+        {
+          "name": "Link_23R",
+          "index": 6,
+          "parent": "Link_22R"
+        },
+        {
+          "name": "Link_24R",
+          "index": 7,
+          "parent": "Link_23R"
+        },
+        {
+          "name": "Link_31R",
+          "index": 8,
+          "parent": "base_link00"
+        },
+        {
+          "name": "Link_32R",
+          "index": 9,
+          "parent": "Link_31R"
+        },
+        {
+          "name": "Link_33R",
+          "index": 10,
+          "parent": "Link_32R"
+        },
+        {
+          "name": "Link_34R",
+          "index": 11,
+          "parent": "Link_33R"
+        },
+        {
+          "name": "Link_41R",
+          "index": 12,
+          "parent": "base_link00"
+        },
+        {
+          "name": "Link_42R",
+          "index": 13,
+          "parent": "Link_41R"
+        },
+        {
+          "name": "Link_43R",
+          "index": 14,
+          "parent": "Link_42R"
+        },
+        {
+          "name": "Link_44R",
+          "index": 15,
+          "parent": "Link_43R"
+        },
+        {
+          "name": "Link_51R",
+          "index": 16,
+          "parent": "base_link00"
+        },
+        {
+          "name": "Link_52R",
+          "index": 17,
+          "parent": "Link_51R"
+        },
+        {
+          "name": "Link_53R",
+          "index": 18,
+          "parent": "Link_52R"
+        },
+        {
+          "name": "Link_54R",
+          "index": 19,
+          "parent": "Link_53R"
+        }
+      ],
+      "joints": [
+        {
+          "name": "Yaw_11R",
+          "index": 0,
+          "type": "revolute",
+          "lower_limit": -0.5867,
+          "upper_limit": 0.6803,
+          "max_force": 0.93,
+          "max_velocity": 4.18
+        },
+        {
+          "name": "Roll_12R",
+          "index": 1,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.8151,
+          "max_force": 0.93,
+          "max_velocity": 4.18
+        },
+        {
+          "name": "Pitch_13R",
+          "index": 2,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.765226,
+          "max_force": 0.93,
+          "max_velocity": 4.18
+        },
+        {
+          "name": "Pitch_14R",
+          "index": 3,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.6406,
+          "max_force": 0.93,
+          "max_velocity": 4.18
+        },
+        {
+          "name": "Roll_21R",
+          "index": 4,
+          "type": "revolute",
+          "lower_limit": -0.38397,
+          "upper_limit": 0.38397,
+          "max_force": 0.0,
+          "max_velocity": 0.76794
+        },
+        {
+          "name": "Pitch_22R",
+          "index": 5,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.5707963,
+          "max_force": 0.0,
+          "max_velocity": 3.1415926
+        },
+        {
+          "name": "Pitch_23R",
+          "index": 6,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.684242699,
+          "max_force": 0.0,
+          "max_velocity": 3.368485398
+        },
+        {
+          "name": "Pitch_24R",
+          "index": 7,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.396263378,
+          "max_force": 0.0,
+          "max_velocity": 2.792526756
+        },
+        {
+          "name": "Roll_31R",
+          "index": 8,
+          "type": "revolute",
+          "lower_limit": -0.38397,
+          "upper_limit": 0.38397,
+          "max_force": 0.0,
+          "max_velocity": 0.76794
+        },
+        {
+          "name": "Pitch_32R",
+          "index": 9,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.5707963,
+          "max_force": 0.0,
+          "max_velocity": 3.1415926
+        },
+        {
+          "name": "Pitch_33R",
+          "index": 10,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.684242699,
+          "max_force": 0.0,
+          "max_velocity": 3.368485398
+        },
+        {
+          "name": "Pitch_34R",
+          "index": 11,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.396263378,
+          "max_force": 0.0,
+          "max_velocity": 2.792526756
+        },
+        {
+          "name": "Roll_41R",
+          "index": 12,
+          "type": "revolute",
+          "lower_limit": -0.38397,
+          "upper_limit": 0.38397,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "Pitch_42R",
+          "index": 13,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.5708,
+          "max_force": 0.0,
+          "max_velocity": 3.1415926
+        },
+        {
+          "name": "Pitch_43R",
+          "index": 14,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.6842,
+          "max_force": 0.0,
+          "max_velocity": 3.368485398
+        },
+        {
+          "name": "Pitch_44R",
+          "index": 15,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.3963,
+          "max_force": 0.0,
+          "max_velocity": 2.7925
+        },
+        {
+          "name": "Roll_51R",
+          "index": 16,
+          "type": "revolute",
+          "lower_limit": -0.38397,
+          "upper_limit": 0.38397,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "Pitch_52R",
+          "index": 17,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.5708,
+          "max_force": 0.0,
+          "max_velocity": 3.1416
+        },
+        {
+          "name": "Pitch_53R",
+          "index": 18,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.6842,
+          "max_force": 0.0,
+          "max_velocity": 3.3685
+        },
+        {
+          "name": "Pitch_54R",
+          "index": 19,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 1.3963,
+          "max_force": 0.0,
+          "max_velocity": 2.7925
+        }
+      ],
+      "joint_exercise": [
+        {
+          "joint_name": "Yaw_11R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Roll_12R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_13R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_14R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Roll_21R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_22R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_23R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_24R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Roll_31R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_32R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_33R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_34R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Roll_41R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_42R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_43R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_44R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Roll_51R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_52R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_53R",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "Pitch_54R",
+          "status": "PASS",
+          "errors": []
+        }
+      ],
+      "stability": {
+        "steps_run": 60,
+        "nan_detected": false,
+        "status": "PASS"
+      },
+      "screenshots": [
+        {
+          "view": "front",
+          "path": "front.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 0.0,
+            "pitch": -20.0,
+            "target": [
+              0.0295,
+              0.0658,
+              0.0485
+            ]
+          }
+        },
+        {
+          "view": "rear",
+          "path": "rear.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 180.0,
+            "pitch": -20.0,
+            "target": [
+              0.0295,
+              0.0658,
+              0.0485
+            ]
+          }
+        },
+        {
+          "view": "left",
+          "path": "left.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 90.0,
+            "pitch": -20.0,
+            "target": [
+              0.0295,
+              0.0658,
+              0.0485
+            ]
+          }
+        },
+        {
+          "view": "right",
+          "path": "right.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 270.0,
+            "pitch": -20.0,
+            "target": [
+              0.0295,
+              0.0658,
+              0.0485
+            ]
+          }
+        },
+        {
+          "view": "top",
+          "path": "top.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 0.0,
+            "pitch": -89.0,
+            "target": [
+              0.0295,
+              0.0658,
+              0.0485
+            ]
+          }
+        },
+        {
+          "view": "perspective",
+          "path": "perspective.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 45.0,
+            "pitch": -30.0,
+            "target": [
+              0.0295,
+              0.0658,
+              0.0485
+            ]
+          }
+        },
+        {
+          "view": "isometric",
+          "path": "isometric.png",
+          "camera": {
+            "distance": 1.0,
+            "yaw": 35.26,
+            "pitch": -30.0,
+            "target": [
+              0.0295,
+              0.0658,
+              0.0485
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "loading": "PASS",
+        "stability": "PASS",
+        "joint_exercise": "PASS",
+        "overall": "PASS"
+      }
+    }
+  ],
+  "overall": "PASS"
+}

@@ -52,7 +52,7 @@ The metadata file defines every model in the package. Example:
   "display_name": "Unitree G1",
   "description": "Unitree Robotics G1 humanoid robot. Available in 29-DOF and 26-DOF configurations.",
 
-  "version": "1.0.0",
+  "version": "1.1.0",
   "arsenal_version": "1",
 
   "source": "https://github.com/unitreerobotics/unitree_ros",
@@ -116,10 +116,26 @@ If your package requires Founder Review, the verification pipeline will still ru
 
 ## Verification Pipeline
 
+**Install the Arsenal CLI (once, from the repository root):**
+```bash
+pip install -e .
+```
+
 **Full verification pipeline (mandatory before PR):**
 ```bash
-python scripts/run_verification.py robots/your_robot_name
+arsenal verify robots/your_robot_name
 ```
+
+**Structure check only (no simulation, no PyBullet required):**
+```bash
+arsenal verify robots/your_robot_name --skip-simulation
+```
+
+> [!NOTE]
+> If you cannot use `pip install`, the underlying script is still available:
+> ```bash
+> python scripts/run_verification.py robots/your_robot_name
+> ```
 
 After the verification pipeline passes, commit the auto-generated `verification/` directory as part of your pull request. This includes the `verification_report.json`, `robot_summary.md`, and all screenshots.
 
@@ -144,4 +160,4 @@ After the verification pipeline passes, commit the auto-generated `verification/
 - [ ] `metadata.json` is complete: all fields present, `models` array populated, one `"default": true`.
 - [ ] `LICENSE` is present, non-empty, and uses a recognised license.
 - [ ] `NOTICE.md` is present, non-empty, and accurately attributes the original authors.
-- [ ] `scripts/run_verification.py robots/your_package` passes and the `verification/` directory has been committed.
+- [ ] `arsenal verify robots/your_robot_name` passes and the `verification/` directory has been committed.

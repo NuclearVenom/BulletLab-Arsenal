@@ -1,0 +1,39 @@
+{
+  "name": "dex3_1",
+  "display_name": "Dex3 1",
+  "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
+  "version": "1.0.0",
+  "arsenal_version": "1",
+  "source": "https://github.com/unitreerobotics/unitree_ros/tree/master/robots",
+  "license": "BSD-3-Clause",
+  "authors": [
+    "Unitree Robotics"
+  ],
+  "maintainers": [
+    "BulletLab Forge"
+  ],
+  "tags": [
+    "ros",
+    "gazebo",
+    "robot-description",
+    "simulation",
+    "unitree"
+  ],
+  "minimum_bulletlab_version": ">=0.1.0",
+  "models": [
+    {
+      "id": "dex3_1_l",
+      "display_name": "dex3 1 l",
+      "entrypoint": "urdf/dex3_1_l.urdf",
+      "description": "Generated from dex3_1_l.urdf",
+      "default": true
+    },
+    {
+      "id": "dex3_1_r",
+      "display_name": "dex3 1 r",
+      "entrypoint": "urdf/dex3_1_r.urdf",
+      "description": "Generated from dex3_1_r.urdf",
+      "default": false
+    }
+  ]
+}

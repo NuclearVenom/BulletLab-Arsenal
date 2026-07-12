@@ -10,7 +10,7 @@ BulletLab Arsenal features a fully automated, machine-readable manifest system. 
 
 > [!WARNING]
 > **Contributors must NEVER edit manifest files manually.**
-> Manifests are automatically rebuilt by the master verification pipeline (`scripts/run_verification.py`). If you manually edit a manifest file, your changes will be overwritten or rejected.
+> Manifests are automatically rebuilt by the Arsenal CLI (`arsenal manifest`, or as part of `arsenal verify`). If you manually edit a manifest file, your changes will be overwritten or rejected.
 
 ---
 
@@ -114,10 +114,16 @@ The `arsenal-manifest.json` file at the repository root aggregates statistics an
 
 ## Validation
 
-The master verification script (`scripts/run_verification.py`) builds and ensures the integrity of the generated manifests. It verifies that:
+The Arsenal CLI (`arsenal verify`, `arsenal verify-all`, `arsenal manifest`) builds and ensures the integrity of the generated manifests. It verifies that:
 - Manifests exist for every populated category.
 - The global manifest exists and is valid.
 - Every package on disk matches exactly one entry in the manifest (no missing packages, no orphaned manifest entries).
 - There are no duplicate package names.
 
-The master verification script (`scripts/run_verification.py`) rebuilds manifests from scratch. It does not expect contributors to sync manifests; instead, it enforces the single source of truth at the pipeline level.
+Manifests are always rebuilt from scratch by the pipeline. Contributors must never manually sync manifests; the pipeline is the sole source of truth.
+
+To regenerate manifests without running full verification:
+```bash
+arsenal manifest
+```
+

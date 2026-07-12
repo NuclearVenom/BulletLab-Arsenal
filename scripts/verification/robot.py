@@ -15,16 +15,20 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+_PYBULLET_AVAILABLE = False
 try:
     import pybullet as p
     import pybullet_data
+    _PYBULLET_AVAILABLE = True
 except ImportError:
     pass
 
+_BULLETLAB_AVAILABLE = False
 try:
     import bulletlab
     from bulletlab import Simulation, Robot
     BULLETLAB_VERSION = bulletlab.__version__
+    _BULLETLAB_AVAILABLE = True
 except ImportError:
     BULLETLAB_VERSION = "unknown"
 
@@ -330,6 +334,18 @@ def verify_robot(
     metadata_path = package_dir / "metadata.json"
     verification_dir = package_dir / "verification"
     screenshots_dir = verification_dir / "screenshots"
+
+    if not _BULLETLAB_AVAILABLE or not _PYBULLET_AVAILABLE:
+        missing = []
+        if not _BULLETLAB_AVAILABLE:
+            missing.append("bulletlab")
+        if not _PYBULLET_AVAILABLE:
+            missing.append("pybullet")
+        raise RuntimeError(
+            f"Layer 3 (BulletLab simulation) requires: {', '.join(missing)}.\n"
+            "Install with:  pip install bulletlab pybullet\n"
+            "Or skip simulation with:  arsenal verify <path> --skip-simulation"
+        )
 
     if not metadata_path.is_file():
         return {"_passed": False, "package": pkg_name,

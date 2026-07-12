@@ -1,0 +1,941 @@
+{
+  "package": "b1_description",
+  "verification_timestamp": "2026-07-12T08:21:30.161567+00:00",
+  "bulletlab_version": "0.2.1",
+  "models": [
+    {
+      "model_id": "b1",
+      "model_display_name": "b1",
+      "entrypoint": "urdf/b1.urdf",
+      "loading": {
+        "status": "PASS"
+      },
+      "placement": {
+        "final_base_position": [
+          0.0,
+          0.0,
+          0.7482699947357178
+        ],
+        "lift_applied_meters": 0.74827
+      },
+      "dimensions_meters": {
+        "width_x": 0.9803,
+        "depth_y": 0.4775,
+        "height_z": 0.8375
+      },
+      "links": [
+        {
+          "name": "base",
+          "index": -1,
+          "parent": null
+        },
+        {
+          "name": "trunk",
+          "index": 0,
+          "parent": "base"
+        },
+        {
+          "name": "imu_link",
+          "index": 1,
+          "parent": "trunk"
+        },
+        {
+          "name": "left_side_camera_link",
+          "index": 2,
+          "parent": "trunk"
+        },
+        {
+          "name": "right_side_camera_link",
+          "index": 3,
+          "parent": "trunk"
+        },
+        {
+          "name": "head_camera_1_link",
+          "index": 4,
+          "parent": "trunk"
+        },
+        {
+          "name": "head_camera_2_link",
+          "index": 5,
+          "parent": "trunk"
+        },
+        {
+          "name": "tail_camera_link",
+          "index": 6,
+          "parent": "trunk"
+        },
+        {
+          "name": "FR_hip",
+          "index": 7,
+          "parent": "trunk"
+        },
+        {
+          "name": "FR_thigh",
+          "index": 8,
+          "parent": "FR_hip"
+        },
+        {
+          "name": "FR_calf",
+          "index": 9,
+          "parent": "FR_thigh"
+        },
+        {
+          "name": "FR_foot",
+          "index": 10,
+          "parent": "FR_calf"
+        },
+        {
+          "name": "FR_calf_rotor",
+          "index": 11,
+          "parent": "FR_thigh"
+        },
+        {
+          "name": "FR_thigh_rotor",
+          "index": 12,
+          "parent": "FR_hip"
+        },
+        {
+          "name": "FR_hip_rotor",
+          "index": 13,
+          "parent": "trunk"
+        },
+        {
+          "name": "FL_hip",
+          "index": 14,
+          "parent": "trunk"
+        },
+        {
+          "name": "FL_thigh",
+          "index": 15,
+          "parent": "FL_hip"
+        },
+        {
+          "name": "FL_calf",
+          "index": 16,
+          "parent": "FL_thigh"
+        },
+        {
+          "name": "FL_foot",
+          "index": 17,
+          "parent": "FL_calf"
+        },
+        {
+          "name": "FL_calf_rotor",
+          "index": 18,
+          "parent": "FL_thigh"
+        },
+        {
+          "name": "FL_thigh_rotor",
+          "index": 19,
+          "parent": "FL_hip"
+        },
+        {
+          "name": "FL_hip_rotor",
+          "index": 20,
+          "parent": "trunk"
+        },
+        {
+          "name": "RR_hip",
+          "index": 21,
+          "parent": "trunk"
+        },
+        {
+          "name": "RR_thigh",
+          "index": 22,
+          "parent": "RR_hip"
+        },
+        {
+          "name": "RR_calf",
+          "index": 23,
+          "parent": "RR_thigh"
+        },
+        {
+          "name": "RR_foot",
+          "index": 24,
+          "parent": "RR_calf"
+        },
+        {
+          "name": "RR_calf_rotor",
+          "index": 25,
+          "parent": "RR_thigh"
+        },
+        {
+          "name": "RR_thigh_rotor",
+          "index": 26,
+          "parent": "RR_hip"
+        },
+        {
+          "name": "RR_hip_rotor",
+          "index": 27,
+          "parent": "trunk"
+        },
+        {
+          "name": "RL_hip",
+          "index": 28,
+          "parent": "trunk"
+        },
+        {
+          "name": "RL_thigh",
+          "index": 29,
+          "parent": "RL_hip"
+        },
+        {
+          "name": "RL_calf",
+          "index": 30,
+          "parent": "RL_thigh"
+        },
+        {
+          "name": "RL_foot",
+          "index": 31,
+          "parent": "RL_calf"
+        },
+        {
+          "name": "RL_calf_rotor",
+          "index": 32,
+          "parent": "RL_thigh"
+        },
+        {
+          "name": "RL_thigh_rotor",
+          "index": 33,
+          "parent": "RL_hip"
+        },
+        {
+          "name": "RL_hip_rotor",
+          "index": 34,
+          "parent": "trunk"
+        }
+      ],
+      "joints": [
+        {
+          "name": "floating_base",
+          "index": 0,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "imu_joint",
+          "index": 1,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "left_side_camera_joint",
+          "index": 2,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "right_side_camera_joint",
+          "index": 3,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "head_camera_1_joint",
+          "index": 4,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "head_camera_2_joint",
+          "index": 5,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "tail_camera_joint",
+          "index": 6,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FR_hip_joint",
+          "index": 7,
+          "type": "revolute",
+          "lower_limit": -0.75,
+          "upper_limit": 0.75,
+          "max_force": 91.0035,
+          "max_velocity": 19.69
+        },
+        {
+          "name": "FR_thigh_joint",
+          "index": 8,
+          "type": "revolute",
+          "lower_limit": -1.0,
+          "upper_limit": 3.5,
+          "max_force": 93.33,
+          "max_velocity": 23.32
+        },
+        {
+          "name": "FR_calf_joint",
+          "index": 9,
+          "type": "revolute",
+          "lower_limit": -2.6,
+          "upper_limit": -0.6,
+          "max_force": 140.0,
+          "max_velocity": 15.55
+        },
+        {
+          "name": "FR_foot_fixed",
+          "index": 10,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FR_calf_rotor_joint",
+          "index": 11,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FR_thigh_rotor_joint",
+          "index": 12,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FR_hip_rotor_joint",
+          "index": 13,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FL_hip_joint",
+          "index": 14,
+          "type": "revolute",
+          "lower_limit": -0.75,
+          "upper_limit": 0.75,
+          "max_force": 91.0035,
+          "max_velocity": 19.69
+        },
+        {
+          "name": "FL_thigh_joint",
+          "index": 15,
+          "type": "revolute",
+          "lower_limit": -1.0,
+          "upper_limit": 3.5,
+          "max_force": 93.33,
+          "max_velocity": 23.32
+        },
+        {
+          "name": "FL_calf_joint",
+          "index": 16,
+          "type": "revolute",
+          "lower_limit": -2.6,
+          "upper_limit": -0.6,
+          "max_force": 140.0,
+          "max_velocity": 15.55
+        },
+        {
+          "name": "FL_foot_fixed",
+          "index": 17,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FL_calf_rotor_joint",
+          "index": 18,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FL_thigh_rotor_joint",
+          "index": 19,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FL_hip_rotor_joint",
+          "index": 20,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RR_hip_joint",
+          "index": 21,
+          "type": "revolute",
+          "lower_limit": -0.75,
+          "upper_limit": 0.75,
+          "max_force": 91.0035,
+          "max_velocity": 19.69
+        },
+        {
+          "name": "RR_thigh_joint",
+          "index": 22,
+          "type": "revolute",
+          "lower_limit": -1.0,
+          "upper_limit": 3.5,
+          "max_force": 93.33,
+          "max_velocity": 23.32
+        },
+        {
+          "name": "RR_calf_joint",
+          "index": 23,
+          "type": "revolute",
+          "lower_limit": -2.6,
+          "upper_limit": -0.6,
+          "max_force": 140.0,
+          "max_velocity": 15.55
+        },
+        {
+          "name": "RR_foot_fixed",
+          "index": 24,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RR_calf_rotor_joint",
+          "index": 25,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RR_thigh_rotor_joint",
+          "index": 26,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RR_hip_rotor_joint",
+          "index": 27,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RL_hip_joint",
+          "index": 28,
+          "type": "revolute",
+          "lower_limit": -0.75,
+          "upper_limit": 0.75,
+          "max_force": 91.0035,
+          "max_velocity": 19.69
+        },
+        {
+          "name": "RL_thigh_joint",
+          "index": 29,
+          "type": "revolute",
+          "lower_limit": -1.0,
+          "upper_limit": 3.5,
+          "max_force": 93.33,
+          "max_velocity": 23.32
+        },
+        {
+          "name": "RL_calf_joint",
+          "index": 30,
+          "type": "revolute",
+          "lower_limit": -2.6,
+          "upper_limit": -0.6,
+          "max_force": 140.0,
+          "max_velocity": 15.55
+        },
+        {
+          "name": "RL_foot_fixed",
+          "index": 31,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RL_calf_rotor_joint",
+          "index": 32,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RL_thigh_rotor_joint",
+          "index": 33,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RL_hip_rotor_joint",
+          "index": 34,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        }
+      ],
+      "joint_exercise": [
+        {
+          "joint_name": "FR_hip_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "FR_thigh_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "FR_calf_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "FL_hip_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "FL_thigh_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "FL_calf_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RR_hip_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RR_thigh_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RR_calf_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RL_hip_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RL_thigh_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RL_calf_joint",
+          "status": "PASS",
+          "errors": []
+        }
+      ],
+      "stability": {
+        "steps_run": 60,
+        "nan_detected": false,
+        "status": "PASS"
+      },
+      "screenshots": [
+        {
+          "view": "front",
+          "path": "front.png",
+          "camera": {
+            "distance": 3.4373,
+            "yaw": 0.0,
+            "pitch": -20.0,
+            "target": [
+              0.0022,
+              0.0,
+              0.4237
+            ]
+          }
+        },
+        {
+          "view": "rear",
+          "path": "rear.png",
+          "camera": {
+            "distance": 3.4373,
+            "yaw": 180.0,
+            "pitch": -20.0,
+            "target": [
+              0.0022,
+              0.0,
+              0.4237
+            ]
+          }
+        },
+        {
+          "view": "left",
+          "path": "left.png",
+          "camera": {
+            "distance": 3.4373,
+            "yaw": 90.0,
+            "pitch": -20.0,
+            "target": [
+              0.0022,
+              0.0,
+              0.4237
+            ]
+          }
+        },
+        {
+          "view": "right",
+          "path": "right.png",
+          "camera": {
+            "distance": 3.4373,
+            "yaw": 270.0,
+            "pitch": -20.0,
+            "target": [
+              0.0022,
+              0.0,
+              0.4237
+            ]
+          }
+        },
+        {
+          "view": "top",
+          "path": "top.png",
+          "camera": {
+            "distance": 3.4373,
+            "yaw": 0.0,
+            "pitch": -89.0,
+            "target": [
+              0.0022,
+              0.0,
+              0.4237
+            ]
+          }
+        },
+        {
+          "view": "perspective",
+          "path": "perspective.png",
+          "camera": {
+            "distance": 3.4373,
+            "yaw": 45.0,
+            "pitch": -30.0,
+            "target": [
+              0.0022,
+              0.0,
+              0.4237
+            ]
+          }
+        },
+        {
+          "view": "isometric",
+          "path": "isometric.png",
+          "camera": {
+            "distance": 3.4373,
+            "yaw": 35.26,
+            "pitch": -30.0,
+            "target": [
+              0.0022,
+              0.0,
+              0.4237
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "loading": "PASS",
+        "stability": "PASS",
+        "joint_exercise": "PASS",
+        "overall": "PASS"
+      }
+    },
+    {
+      "model_id": "robot",
+      "model_display_name": "robot",
+      "entrypoint": "urdf/robot.urdf",
+      "loading": {
+        "status": "PASS"
+      },
+      "placement": {
+        "final_base_position": [
+          0.0,
+          0.0,
+          0.12024498266603043
+        ],
+        "lift_applied_meters": 0.120245
+      },
+      "dimensions_meters": {
+        "width_x": 0.9783,
+        "depth_y": 0.3074,
+        "height_z": 0.2085
+      },
+      "links": [
+        {
+          "name": "base",
+          "index": -1,
+          "parent": null
+        },
+        {
+          "name": "trunk",
+          "index": 0,
+          "parent": "base"
+        },
+        {
+          "name": "imu_link",
+          "index": 1,
+          "parent": "trunk"
+        },
+        {
+          "name": "left_side_camera_link",
+          "index": 2,
+          "parent": "trunk"
+        },
+        {
+          "name": "right_side_camera_link",
+          "index": 3,
+          "parent": "trunk"
+        },
+        {
+          "name": "head_camera_1_link",
+          "index": 4,
+          "parent": "trunk"
+        },
+        {
+          "name": "head_camera_2_link",
+          "index": 5,
+          "parent": "trunk"
+        },
+        {
+          "name": "tail_camera_link",
+          "index": 6,
+          "parent": "trunk"
+        }
+      ],
+      "joints": [
+        {
+          "name": "floating_base",
+          "index": 0,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "imu_joint",
+          "index": 1,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "left_side_camera_joint",
+          "index": 2,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "right_side_camera_joint",
+          "index": 3,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "head_camera_1_joint",
+          "index": 4,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "head_camera_2_joint",
+          "index": 5,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "tail_camera_joint",
+          "index": 6,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        }
+      ],
+      "joint_exercise": [],
+      "stability": {
+        "steps_run": 60,
+        "nan_detected": false,
+        "status": "PASS"
+      },
+      "screenshots": [
+        {
+          "view": "front",
+          "path": "front.png",
+          "camera": {
+            "distance": 2.6161,
+            "yaw": 0.0,
+            "pitch": -20.0,
+            "target": [
+              0.0022,
+              0.0001,
+              0.1092
+            ]
+          }
+        },
+        {
+          "view": "rear",
+          "path": "rear.png",
+          "camera": {
+            "distance": 2.6161,
+            "yaw": 180.0,
+            "pitch": -20.0,
+            "target": [
+              0.0022,
+              0.0001,
+              0.1092
+            ]
+          }
+        },
+        {
+          "view": "left",
+          "path": "left.png",
+          "camera": {
+            "distance": 2.6161,
+            "yaw": 90.0,
+            "pitch": -20.0,
+            "target": [
+              0.0022,
+              0.0001,
+              0.1092
+            ]
+          }
+        },
+        {
+          "view": "right",
+          "path": "right.png",
+          "camera": {
+            "distance": 2.6161,
+            "yaw": 270.0,
+            "pitch": -20.0,
+            "target": [
+              0.0022,
+              0.0001,
+              0.1092
+            ]
+          }
+        },
+        {
+          "view": "top",
+          "path": "top.png",
+          "camera": {
+            "distance": 2.6161,
+            "yaw": 0.0,
+            "pitch": -89.0,
+            "target": [
+              0.0022,
+              0.0001,
+              0.1092
+            ]
+          }
+        },
+        {
+          "view": "perspective",
+          "path": "perspective.png",
+          "camera": {
+            "distance": 2.6161,
+            "yaw": 45.0,
+            "pitch": -30.0,
+            "target": [
+              0.0022,
+              0.0001,
+              0.1092
+            ]
+          }
+        },
+        {
+          "view": "isometric",
+          "path": "isometric.png",
+          "camera": {
+            "distance": 2.6161,
+            "yaw": 35.26,
+            "pitch": -30.0,
+            "target": [
+              0.0022,
+              0.0001,
+              0.1092
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "loading": "PASS",
+        "stability": "PASS",
+        "joint_exercise": "PASS",
+        "overall": "PASS"
+      }
+    }
+  ],
+  "overall": "PASS"
+}

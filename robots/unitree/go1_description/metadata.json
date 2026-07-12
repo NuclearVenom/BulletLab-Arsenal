@@ -1,0 +1,43 @@
+{
+  "name": "go1_description",
+  "display_name": "Go1 Description",
+  "description": "The go1_description package",
+  "version": "0.0.0",
+  "arsenal_version": "1",
+  "source": "https://github.com/unitreerobotics/unitree_ros/tree/master/robots",
+  "license": "BSD-3-Clause",
+  "authors": [
+    "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+    "Unitree Robotics"
+  ],
+  "maintainers": [
+    "BulletLab Forge",
+    "unitree <laikago@unitree.cc>"
+  ],
+  "tags": [
+    "ros",
+    "gazebo",
+    "simulation",
+    "robot-description",
+    "unitree",
+    "low-level-control",
+    "joint-controller"
+  ],
+  "minimum_bulletlab_version": ">=0.1.0",
+  "models": [
+    {
+      "id": "go1",
+      "display_name": "go1",
+      "entrypoint": "urdf/go1.urdf",
+      "description": "Generated from go1.urdf",
+      "default": true
+    },
+    {
+      "id": "robot",
+      "display_name": "robot",
+      "entrypoint": "urdf/robot.urdf",
+      "description": "Generated from robot.xacro",
+      "default": false
+    }
+  ]
+}

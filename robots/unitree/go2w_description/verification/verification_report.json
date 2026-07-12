@@ -1,0 +1,679 @@
+{
+  "package": "go2w_description",
+  "verification_timestamp": "2026-07-12T08:27:39.019812+00:00",
+  "bulletlab_version": "0.2.1",
+  "models": [
+    {
+      "model_id": "go2w_description",
+      "model_display_name": "go2w description",
+      "entrypoint": "urdf/go2w_description.urdf",
+      "loading": {
+        "status": "PASS"
+      },
+      "placement": {
+        "final_base_position": [
+          0.021112,
+          0.0,
+          0.5279977185931206
+        ],
+        "lift_applied_meters": 0.533364
+      },
+      "dimensions_meters": {
+        "width_x": 0.6354,
+        "depth_y": 0.438,
+        "height_z": 0.5864
+      },
+      "links": [
+        {
+          "name": "base",
+          "index": -1,
+          "parent": null
+        },
+        {
+          "name": "Head_upper",
+          "index": 0,
+          "parent": "base"
+        },
+        {
+          "name": "Head_lower",
+          "index": 1,
+          "parent": "Head_upper"
+        },
+        {
+          "name": "FL_hip",
+          "index": 2,
+          "parent": "base"
+        },
+        {
+          "name": "FL_thigh",
+          "index": 3,
+          "parent": "FL_hip"
+        },
+        {
+          "name": "FL_calf",
+          "index": 4,
+          "parent": "FL_thigh"
+        },
+        {
+          "name": "FL_calflower",
+          "index": 5,
+          "parent": "FL_calf"
+        },
+        {
+          "name": "FL_calflower1",
+          "index": 6,
+          "parent": "FL_calflower"
+        },
+        {
+          "name": "FL_foot_motor",
+          "index": 7,
+          "parent": "FL_calf"
+        },
+        {
+          "name": "FL_foot",
+          "index": 8,
+          "parent": "FL_calf"
+        },
+        {
+          "name": "FR_hip",
+          "index": 9,
+          "parent": "base"
+        },
+        {
+          "name": "FR_thigh",
+          "index": 10,
+          "parent": "FR_hip"
+        },
+        {
+          "name": "FR_calf",
+          "index": 11,
+          "parent": "FR_thigh"
+        },
+        {
+          "name": "FR_calflower",
+          "index": 12,
+          "parent": "FR_calf"
+        },
+        {
+          "name": "FR_calflower1",
+          "index": 13,
+          "parent": "FR_calflower"
+        },
+        {
+          "name": "FR_foot_motor",
+          "index": 14,
+          "parent": "FR_calf"
+        },
+        {
+          "name": "FR_foot",
+          "index": 15,
+          "parent": "FR_calf"
+        },
+        {
+          "name": "RL_hip",
+          "index": 16,
+          "parent": "base"
+        },
+        {
+          "name": "RL_thigh",
+          "index": 17,
+          "parent": "RL_hip"
+        },
+        {
+          "name": "RL_calf",
+          "index": 18,
+          "parent": "RL_thigh"
+        },
+        {
+          "name": "RL_calflower",
+          "index": 19,
+          "parent": "RL_calf"
+        },
+        {
+          "name": "RL_calflower1",
+          "index": 20,
+          "parent": "RL_calflower"
+        },
+        {
+          "name": "RL_foot_motor",
+          "index": 21,
+          "parent": "RL_calf"
+        },
+        {
+          "name": "RL_foot",
+          "index": 22,
+          "parent": "RL_calf"
+        },
+        {
+          "name": "RR_hip",
+          "index": 23,
+          "parent": "base"
+        },
+        {
+          "name": "RR_thigh",
+          "index": 24,
+          "parent": "RR_hip"
+        },
+        {
+          "name": "RR_calf",
+          "index": 25,
+          "parent": "RR_thigh"
+        },
+        {
+          "name": "RR_calflower",
+          "index": 26,
+          "parent": "RR_calf"
+        },
+        {
+          "name": "RR_calflower1",
+          "index": 27,
+          "parent": "RR_calflower"
+        },
+        {
+          "name": "RR_foot_motor",
+          "index": 28,
+          "parent": "RR_calf"
+        },
+        {
+          "name": "RR_foot",
+          "index": 29,
+          "parent": "RR_calf"
+        },
+        {
+          "name": "imu",
+          "index": 30,
+          "parent": "base"
+        },
+        {
+          "name": "radar",
+          "index": 31,
+          "parent": "base"
+        }
+      ],
+      "joints": [
+        {
+          "name": "Head_upper_joint",
+          "index": 0,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "Head_lower_joint",
+          "index": 1,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FL_hip_joint",
+          "index": 2,
+          "type": "revolute",
+          "lower_limit": -1.0472,
+          "upper_limit": 1.0472,
+          "max_force": 23.7,
+          "max_velocity": 30.1
+        },
+        {
+          "name": "FL_thigh_joint",
+          "index": 3,
+          "type": "revolute",
+          "lower_limit": -1.5707963267948966,
+          "upper_limit": 3.4907,
+          "max_force": 23.7,
+          "max_velocity": 30.1
+        },
+        {
+          "name": "FL_calf_joint",
+          "index": 4,
+          "type": "revolute",
+          "lower_limit": -2.7227,
+          "upper_limit": -0.83776,
+          "max_force": 35.55,
+          "max_velocity": 20.07
+        },
+        {
+          "name": "FL_calflower_joint",
+          "index": 5,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FL_calflower1_joint",
+          "index": 6,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FL_foot_motor_joint",
+          "index": 7,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FL_foot_joint",
+          "index": 8,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 23.7,
+          "max_velocity": 30.1
+        },
+        {
+          "name": "FR_hip_joint",
+          "index": 9,
+          "type": "revolute",
+          "lower_limit": -1.0472,
+          "upper_limit": 1.0472,
+          "max_force": 23.7,
+          "max_velocity": 30.1
+        },
+        {
+          "name": "FR_thigh_joint",
+          "index": 10,
+          "type": "revolute",
+          "lower_limit": -1.5707963267948966,
+          "upper_limit": 3.4907,
+          "max_force": 23.7,
+          "max_velocity": 30.1
+        },
+        {
+          "name": "FR_calf_joint",
+          "index": 11,
+          "type": "revolute",
+          "lower_limit": -2.7227,
+          "upper_limit": -0.83776,
+          "max_force": 35.55,
+          "max_velocity": 20.07
+        },
+        {
+          "name": "FR_calflower_joint",
+          "index": 12,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FR_calflower1_joint",
+          "index": 13,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FR_foot_motor_joint",
+          "index": 14,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "FR_foot_joint",
+          "index": 15,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 23.7,
+          "max_velocity": 30.1
+        },
+        {
+          "name": "RL_hip_joint",
+          "index": 16,
+          "type": "revolute",
+          "lower_limit": -1.0472,
+          "upper_limit": 1.0472,
+          "max_force": 23.7,
+          "max_velocity": 30.1
+        },
+        {
+          "name": "RL_thigh_joint",
+          "index": 17,
+          "type": "revolute",
+          "lower_limit": -0.5236,
+          "upper_limit": 4.5379,
+          "max_force": 23.7,
+          "max_velocity": 30.1
+        },
+        {
+          "name": "RL_calf_joint",
+          "index": 18,
+          "type": "revolute",
+          "lower_limit": -2.7227,
+          "upper_limit": -0.83776,
+          "max_force": 35.55,
+          "max_velocity": 20.07
+        },
+        {
+          "name": "RL_calflower_joint",
+          "index": 19,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RL_calflower1_joint",
+          "index": 20,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RL_foot_motor_joint",
+          "index": 21,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RL_foot_joint",
+          "index": 22,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 23.7,
+          "max_velocity": 30.1
+        },
+        {
+          "name": "RR_hip_joint",
+          "index": 23,
+          "type": "revolute",
+          "lower_limit": -1.0472,
+          "upper_limit": 1.0472,
+          "max_force": 23.7,
+          "max_velocity": 30.1
+        },
+        {
+          "name": "RR_thigh_joint",
+          "index": 24,
+          "type": "revolute",
+          "lower_limit": -0.5236,
+          "upper_limit": 4.5379,
+          "max_force": 23.7,
+          "max_velocity": 30.1
+        },
+        {
+          "name": "RR_calf_joint",
+          "index": 25,
+          "type": "revolute",
+          "lower_limit": -2.7227,
+          "upper_limit": -0.83776,
+          "max_force": 35.55,
+          "max_velocity": 20.07
+        },
+        {
+          "name": "RR_calflower_joint",
+          "index": 26,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RR_calflower1_joint",
+          "index": 27,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RR_foot_motor_joint",
+          "index": 28,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "RR_foot_joint",
+          "index": 29,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 23.7,
+          "max_velocity": 30.1
+        },
+        {
+          "name": "imu_joint",
+          "index": 30,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "radar_joint",
+          "index": 31,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        }
+      ],
+      "joint_exercise": [
+        {
+          "joint_name": "FL_hip_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "FL_thigh_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "FL_calf_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "FL_foot_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "FR_hip_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "FR_thigh_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "FR_calf_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "FR_foot_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RL_hip_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RL_thigh_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RL_calf_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RL_foot_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RR_hip_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RR_thigh_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RR_calf_joint",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "RR_foot_joint",
+          "status": "PASS",
+          "errors": []
+        }
+      ],
+      "stability": {
+        "steps_run": 60,
+        "nan_detected": false,
+        "status": "PASS"
+      },
+      "screenshots": [
+        {
+          "view": "front",
+          "path": "front.png",
+          "camera": {
+            "distance": 2.4231,
+            "yaw": 0.0,
+            "pitch": -20.0,
+            "target": [
+              0.0353,
+              0.0,
+              0.2982
+            ]
+          }
+        },
+        {
+          "view": "rear",
+          "path": "rear.png",
+          "camera": {
+            "distance": 2.4231,
+            "yaw": 180.0,
+            "pitch": -20.0,
+            "target": [
+              0.0353,
+              0.0,
+              0.2982
+            ]
+          }
+        },
+        {
+          "view": "left",
+          "path": "left.png",
+          "camera": {
+            "distance": 2.4231,
+            "yaw": 90.0,
+            "pitch": -20.0,
+            "target": [
+              0.0353,
+              0.0,
+              0.2982
+            ]
+          }
+        },
+        {
+          "view": "right",
+          "path": "right.png",
+          "camera": {
+            "distance": 2.4231,
+            "yaw": 270.0,
+            "pitch": -20.0,
+            "target": [
+              0.0353,
+              0.0,
+              0.2982
+            ]
+          }
+        },
+        {
+          "view": "top",
+          "path": "top.png",
+          "camera": {
+            "distance": 2.4231,
+            "yaw": 0.0,
+            "pitch": -89.0,
+            "target": [
+              0.0353,
+              0.0,
+              0.2982
+            ]
+          }
+        },
+        {
+          "view": "perspective",
+          "path": "perspective.png",
+          "camera": {
+            "distance": 2.4231,
+            "yaw": 45.0,
+            "pitch": -30.0,
+            "target": [
+              0.0353,
+              0.0,
+              0.2982
+            ]
+          }
+        },
+        {
+          "view": "isometric",
+          "path": "isometric.png",
+          "camera": {
+            "distance": 2.4231,
+            "yaw": 35.26,
+            "pitch": -30.0,
+            "target": [
+              0.0353,
+              0.0,
+              0.2982
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "loading": "PASS",
+        "stability": "PASS",
+        "joint_exercise": "PASS",
+        "overall": "PASS"
+      }
+    }
+  ],
+  "overall": "PASS"
+}

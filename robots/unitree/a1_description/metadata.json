@@ -1,0 +1,41 @@
+{
+  "name": "a1_description",
+  "display_name": "A1 Description",
+  "description": "The a1_description package",
+  "version": "0.0.0",
+  "arsenal_version": "1",
+  "source": "https://github.com/unitreerobotics/unitree_ros/tree/master/robots",
+  "license": "BSD-3-Clause",
+  "authors": [
+    "HangZhou YuShu TECHNOLOGY CO.,LTD."
+  ],
+  "maintainers": [
+    "BulletLab Forge",
+    "unitree <laikago@unitree.cc>"
+  ],
+  "tags": [
+    "ros",
+    "simulation",
+    "gazebo",
+    "unitree",
+    "robot-description",
+    "joint-controller"
+  ],
+  "minimum_bulletlab_version": ">=0.1.0",
+  "models": [
+    {
+      "id": "a1",
+      "display_name": "a1",
+      "entrypoint": "urdf/a1.urdf",
+      "description": "Generated from a1.urdf",
+      "default": true
+    },
+    {
+      "id": "robot",
+      "display_name": "robot",
+      "entrypoint": "urdf/robot.urdf",
+      "description": "Generated from robot.xacro",
+      "default": false
+    }
+  ]
+}

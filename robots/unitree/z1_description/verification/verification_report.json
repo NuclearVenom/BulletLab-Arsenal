@@ -1,0 +1,550 @@
+{
+  "package": "z1_description",
+  "verification_timestamp": "2026-07-12T08:29:40.009695+00:00",
+  "bulletlab_version": "0.2.1",
+  "models": [
+    {
+      "model_id": "robot",
+      "model_display_name": "robot",
+      "entrypoint": "urdf/robot.urdf",
+      "loading": {
+        "status": "PASS"
+      },
+      "placement": {
+        "final_base_position": [
+          0.0,
+          0.0,
+          0.007
+        ],
+        "lift_applied_meters": 0.007
+      },
+      "dimensions_meters": {
+        "width_x": 0.356,
+        "depth_y": 0.006,
+        "height_z": 0.193
+      },
+      "links": [
+        {
+          "name": "world",
+          "index": -1,
+          "parent": null
+        },
+        {
+          "name": "link00",
+          "index": 0,
+          "parent": "world"
+        },
+        {
+          "name": "link01",
+          "index": 1,
+          "parent": "link00"
+        },
+        {
+          "name": "link02",
+          "index": 2,
+          "parent": "link01"
+        },
+        {
+          "name": "link03",
+          "index": 3,
+          "parent": "link02"
+        },
+        {
+          "name": "link04",
+          "index": 4,
+          "parent": "link03"
+        },
+        {
+          "name": "link05",
+          "index": 5,
+          "parent": "link04"
+        },
+        {
+          "name": "link06",
+          "index": 6,
+          "parent": "link05"
+        }
+      ],
+      "joints": [
+        {
+          "name": "base_static_joint",
+          "index": 0,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "joint1",
+          "index": 1,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 0.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "joint2",
+          "index": 2,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 0.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "joint3",
+          "index": 3,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 0.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "joint4",
+          "index": 4,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 0.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "joint5",
+          "index": 5,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 0.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "joint6",
+          "index": 6,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 0.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        }
+      ],
+      "joint_exercise": [
+        {
+          "joint_name": "joint1",
+          "status": "skipped",
+          "reason": "lower_limit == upper_limit"
+        },
+        {
+          "joint_name": "joint2",
+          "status": "skipped",
+          "reason": "lower_limit == upper_limit"
+        },
+        {
+          "joint_name": "joint3",
+          "status": "skipped",
+          "reason": "lower_limit == upper_limit"
+        },
+        {
+          "joint_name": "joint4",
+          "status": "skipped",
+          "reason": "lower_limit == upper_limit"
+        },
+        {
+          "joint_name": "joint5",
+          "status": "skipped",
+          "reason": "lower_limit == upper_limit"
+        },
+        {
+          "joint_name": "joint6",
+          "status": "skipped",
+          "reason": "lower_limit == upper_limit"
+        }
+      ],
+      "stability": {
+        "steps_run": 60,
+        "nan_detected": false,
+        "status": "PASS"
+      },
+      "screenshots": [
+        {
+          "view": "front",
+          "path": "front.png",
+          "camera": {
+            "distance": 1.0125,
+            "yaw": 0.0,
+            "pitch": -20.0,
+            "target": [
+              -0.175,
+              0.0,
+              0.1015
+            ]
+          }
+        },
+        {
+          "view": "rear",
+          "path": "rear.png",
+          "camera": {
+            "distance": 1.0125,
+            "yaw": 180.0,
+            "pitch": -20.0,
+            "target": [
+              -0.175,
+              0.0,
+              0.1015
+            ]
+          }
+        },
+        {
+          "view": "left",
+          "path": "left.png",
+          "camera": {
+            "distance": 1.0125,
+            "yaw": 90.0,
+            "pitch": -20.0,
+            "target": [
+              -0.175,
+              0.0,
+              0.1015
+            ]
+          }
+        },
+        {
+          "view": "right",
+          "path": "right.png",
+          "camera": {
+            "distance": 1.0125,
+            "yaw": 270.0,
+            "pitch": -20.0,
+            "target": [
+              -0.175,
+              0.0,
+              0.1015
+            ]
+          }
+        },
+        {
+          "view": "top",
+          "path": "top.png",
+          "camera": {
+            "distance": 1.0125,
+            "yaw": 0.0,
+            "pitch": -89.0,
+            "target": [
+              -0.175,
+              0.0,
+              0.1015
+            ]
+          }
+        },
+        {
+          "view": "perspective",
+          "path": "perspective.png",
+          "camera": {
+            "distance": 1.0125,
+            "yaw": 45.0,
+            "pitch": -30.0,
+            "target": [
+              -0.175,
+              0.0,
+              0.1015
+            ]
+          }
+        },
+        {
+          "view": "isometric",
+          "path": "isometric.png",
+          "camera": {
+            "distance": 1.0125,
+            "yaw": 35.26,
+            "pitch": -30.0,
+            "target": [
+              -0.175,
+              0.0,
+              0.1015
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "loading": "PASS",
+        "stability": "PASS",
+        "joint_exercise": "PASS",
+        "overall": "PASS"
+      }
+    },
+    {
+      "model_id": "z1",
+      "model_display_name": "z1",
+      "entrypoint": "urdf/z1.urdf",
+      "loading": {
+        "status": "PASS"
+      },
+      "placement": {
+        "final_base_position": [
+          0.0,
+          0.0,
+          0.008000000000000004
+        ],
+        "lift_applied_meters": 0.008
+      },
+      "dimensions_meters": {
+        "width_x": 0.4267,
+        "depth_y": 0.108,
+        "height_z": 0.2
+      },
+      "links": [
+        {
+          "name": "world",
+          "index": -1,
+          "parent": null
+        },
+        {
+          "name": "link00",
+          "index": 0,
+          "parent": "world"
+        },
+        {
+          "name": "link01",
+          "index": 1,
+          "parent": "link00"
+        },
+        {
+          "name": "link02",
+          "index": 2,
+          "parent": "link01"
+        },
+        {
+          "name": "link03",
+          "index": 3,
+          "parent": "link02"
+        },
+        {
+          "name": "link04",
+          "index": 4,
+          "parent": "link03"
+        },
+        {
+          "name": "link05",
+          "index": 5,
+          "parent": "link04"
+        },
+        {
+          "name": "link06",
+          "index": 6,
+          "parent": "link05"
+        }
+      ],
+      "joints": [
+        {
+          "name": "base_static_joint",
+          "index": 0,
+          "type": "fixed",
+          "lower_limit": 0.0,
+          "upper_limit": -1.0,
+          "max_force": 0.0,
+          "max_velocity": 0.0
+        },
+        {
+          "name": "joint1",
+          "index": 1,
+          "type": "revolute",
+          "lower_limit": -2.6179938779914944,
+          "upper_limit": 2.6179938779914944,
+          "max_force": 30.0,
+          "max_velocity": 3.1415
+        },
+        {
+          "name": "joint2",
+          "index": 2,
+          "type": "revolute",
+          "lower_limit": 0.0,
+          "upper_limit": 2.9670597283903604,
+          "max_force": 60.0,
+          "max_velocity": 3.1415
+        },
+        {
+          "name": "joint3",
+          "index": 3,
+          "type": "revolute",
+          "lower_limit": -2.8797932657906435,
+          "upper_limit": 0.0,
+          "max_force": 30.0,
+          "max_velocity": 3.1415
+        },
+        {
+          "name": "joint4",
+          "index": 4,
+          "type": "revolute",
+          "lower_limit": -1.5184364492350666,
+          "upper_limit": 1.5184364492350666,
+          "max_force": 30.0,
+          "max_velocity": 3.1415
+        },
+        {
+          "name": "joint5",
+          "index": 5,
+          "type": "revolute",
+          "lower_limit": -1.3439035240356338,
+          "upper_limit": 1.3439035240356338,
+          "max_force": 30.0,
+          "max_velocity": 3.1415
+        },
+        {
+          "name": "joint6",
+          "index": 6,
+          "type": "revolute",
+          "lower_limit": -2.792526803190927,
+          "upper_limit": 2.792526803190927,
+          "max_force": 30.0,
+          "max_velocity": 3.1415
+        }
+      ],
+      "joint_exercise": [
+        {
+          "joint_name": "joint1",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "joint2",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "joint3",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "joint4",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "joint5",
+          "status": "PASS",
+          "errors": []
+        },
+        {
+          "joint_name": "joint6",
+          "status": "PASS",
+          "errors": []
+        }
+      ],
+      "stability": {
+        "steps_run": 60,
+        "nan_detected": false,
+        "status": "PASS"
+      },
+      "screenshots": [
+        {
+          "view": "front",
+          "path": "front.png",
+          "camera": {
+            "distance": 1.2087,
+            "yaw": 0.0,
+            "pitch": -20.0,
+            "target": [
+              -0.1721,
+              0.0,
+              0.105
+            ]
+          }
+        },
+        {
+          "view": "rear",
+          "path": "rear.png",
+          "camera": {
+            "distance": 1.2087,
+            "yaw": 180.0,
+            "pitch": -20.0,
+            "target": [
+              -0.1721,
+              0.0,
+              0.105
+            ]
+          }
+        },
+        {
+          "view": "left",
+          "path": "left.png",
+          "camera": {
+            "distance": 1.2087,
+            "yaw": 90.0,
+            "pitch": -20.0,
+            "target": [
+              -0.1721,
+              0.0,
+              0.105
+            ]
+          }
+        },
+        {
+          "view": "right",
+          "path": "right.png",
+          "camera": {
+            "distance": 1.2087,
+            "yaw": 270.0,
+            "pitch": -20.0,
+            "target": [
+              -0.1721,
+              0.0,
+              0.105
+            ]
+          }
+        },
+        {
+          "view": "top",
+          "path": "top.png",
+          "camera": {
+            "distance": 1.2087,
+            "yaw": 0.0,
+            "pitch": -89.0,
+            "target": [
+              -0.1721,
+              0.0,
+              0.105
+            ]
+          }
+        },
+        {
+          "view": "perspective",
+          "path": "perspective.png",
+          "camera": {
+            "distance": 1.2087,
+            "yaw": 45.0,
+            "pitch": -30.0,
+            "target": [
+              -0.1721,
+              0.0,
+              0.105
+            ]
+          }
+        },
+        {
+          "view": "isometric",
+          "path": "isometric.png",
+          "camera": {
+            "distance": 1.2087,
+            "yaw": 35.26,
+            "pitch": -30.0,
+            "target": [
+              -0.1721,
+              0.0,
+              0.105
+            ]
+          }
+        }
+      ],
+      "summary": {
+        "loading": "PASS",
+        "stability": "PASS",
+        "joint_exercise": "PASS",
+        "overall": "PASS"
+      }
+    }
+  ],
+  "overall": "PASS"
+}

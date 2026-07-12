@@ -1,0 +1,40 @@
+{
+  "name": "z1_description",
+  "display_name": "Z1 Description",
+  "description": "The z1_description package",
+  "version": "0.0.0",
+  "arsenal_version": "1",
+  "source": "https://github.com/unitreerobotics/unitree_ros/tree/master/robots",
+  "license": "BSD-3-Clause",
+  "authors": [
+    "Unitree Robotics"
+  ],
+  "maintainers": [
+    "BulletLab Forge",
+    "unitree <laikago@unitree.cc>"
+  ],
+  "tags": [
+    "ros",
+    "gazebo",
+    "simulation",
+    "robotics",
+    "unitree"
+  ],
+  "minimum_bulletlab_version": ">=0.1.0",
+  "models": [
+    {
+      "id": "robot",
+      "display_name": "robot",
+      "entrypoint": "urdf/robot.urdf",
+      "description": "Generated from robot.xacro",
+      "default": true
+    },
+    {
+      "id": "z1",
+      "display_name": "z1",
+      "entrypoint": "urdf/z1.urdf",
+      "description": "Generated from z1.urdf",
+      "default": false
+    }
+  ]
+}

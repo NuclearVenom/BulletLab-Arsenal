@@ -49,14 +49,15 @@ def _get_verified_status(pkg_dir: Path) -> tuple[bool, dict[str, bool]]:
 def _get_contributors_from_git(pkg_dir: Path) -> list[dict]:
     """Extract contributor history from Git log for a specific directory."""
     try:
+        rel_path = pkg_dir.relative_to(_REPO_ROOT)
         result = subprocess.run(
-            ["git", "log", "--reverse", "--format=%an|%ae", "--", str(pkg_dir.name)],
-            cwd=str(pkg_dir.parent),
+            ["git", "log", "--reverse", "--format=%an|%ae", "--", str(rel_path)],
+            cwd=str(_REPO_ROOT),
             capture_output=True,
             text=True,
             check=True
         )
-    except subprocess.CalledProcessError:
+    except (subprocess.CalledProcessError, ValueError):
         return []
 
     lines = result.stdout.strip().split("\n")
@@ -106,11 +107,9 @@ def generate_category_manifest(category_dir: Path) -> dict:
     packages = []
     
     if category_dir.exists():
-        for item in sorted(category_dir.iterdir()):
+        for meta_path in sorted(category_dir.rglob("metadata.json")):
+            item = meta_path.parent
             if not item.is_dir():
-                continue
-            meta_path = item / "metadata.json"
-            if not meta_path.is_file():
                 continue
             
             try:
@@ -147,6 +146,10 @@ def generate_category_manifest(category_dir: Path) -> dict:
                     "verified": models_verified.get(model_id, False)
                 })
 
+            # Manufacturer detection
+            rel_to_cat = item.relative_to(category_dir)
+            manufacturer = rel_to_cat.parts[0] if len(rel_to_cat.parts) > 1 else ""
+
             pkg_entry = {
                 "package_name": pkg_name,
                 "display_name": meta.get("display_name", ""),
@@ -162,6 +165,8 @@ def generate_category_manifest(category_dir: Path) -> dict:
                 "contributors": contributors,
                 "models": models
             }
+            if manufacturer:
+                pkg_entry["manufacturer"] = manufacturer
             packages.append(pkg_entry)
 
     manifest_data = {

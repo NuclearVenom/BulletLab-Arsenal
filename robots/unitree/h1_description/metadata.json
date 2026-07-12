@@ -1,0 +1,42 @@
+{
+  "name": "h1_description",
+  "display_name": "H1 Description",
+  "description": "The Unitree H1 Description Package",
+  "version": "1.0.0",
+  "arsenal_version": "1",
+  "source": "https://github.com/unitreerobotics/unitree_ros/tree/master/robots",
+  "license": "BSD-3-Clause",
+  "authors": [
+    "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+    "Unitree Robotics"
+  ],
+  "maintainers": [
+    "BulletLab Forge",
+    " <TODO@email.com>"
+  ],
+  "tags": [
+    "ros",
+    "simulation",
+    "gazebo",
+    "unitree",
+    "robot-description",
+    "h1"
+  ],
+  "minimum_bulletlab_version": ">=0.1.0",
+  "models": [
+    {
+      "id": "h1",
+      "display_name": "h1",
+      "entrypoint": "urdf/h1.urdf",
+      "description": "Generated from h1.urdf",
+      "default": true
+    },
+    {
+      "id": "h1_with_hand",
+      "display_name": "h1 with hand",
+      "entrypoint": "urdf/h1_with_hand.urdf",
+      "description": "Generated from h1_with_hand.urdf",
+      "default": false
+    }
+  ]
+}

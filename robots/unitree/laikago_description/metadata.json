@@ -1,0 +1,42 @@
+{
+  "name": "laikago_description",
+  "display_name": "Laikago Description",
+  "description": "The laikago_description package",
+  "version": "0.0.0",
+  "arsenal_version": "1",
+  "source": "https://github.com/unitreerobotics/unitree_ros/tree/master/robots",
+  "license": "BSD-3-Clause",
+  "authors": [
+    "HangZhou YuShu TECHNOLOGY CO.,LTD."
+  ],
+  "maintainers": [
+    "BulletLab Forge",
+    "unitree <laikago@unitree.cc>"
+  ],
+  "tags": [
+    "ros",
+    "gazebo",
+    "simulation",
+    "robotics",
+    "unitree",
+    "robot-description",
+    "controller"
+  ],
+  "minimum_bulletlab_version": ">=0.1.0",
+  "models": [
+    {
+      "id": "laikago",
+      "display_name": "laikago",
+      "entrypoint": "urdf/laikago.urdf",
+      "description": "Generated from laikago.urdf",
+      "default": true
+    },
+    {
+      "id": "robot",
+      "display_name": "robot",
+      "entrypoint": "urdf/robot.urdf",
+      "description": "Generated from robot.xacro",
+      "default": false
+    }
+  ]
+}

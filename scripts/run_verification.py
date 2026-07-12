@@ -182,7 +182,7 @@ def main() -> None:
         if not _ROBOTS_DIR.exists():
             print(f"ERROR: robots/ directory not found at {_ROBOTS_DIR}")
             sys.exit(1)
-        pkg_dirs = sorted(d for d in _ROBOTS_DIR.iterdir() if d.is_dir())
+        pkg_dirs = sorted(p.parent for p in _ROBOTS_DIR.rglob("metadata.json") if p.parent.is_dir())
         if not pkg_dirs:
             print("No robot packages found under robots/.")
             sys.exit(0)
@@ -243,24 +243,29 @@ def main() -> None:
             r = run_pipeline_for_package(pkg_dir, args.width, args.height)
             results.append(r)
 
+    any_failed = any(r["final_status"] == "FAIL" for r in results)
+    any_review = any(r["final_status"] == "FOUNDER_REVIEW" for r in results)
+
     # ── Layer 4: Manifest Generation ──────────────────────────────────────
     print(f"\n{'=' * 70}")
-    print("LAYER 4 — MANIFEST GENERATION")
-    print(f"{'=' * 70}")
-    generate_manifests()
+    if any_failed:
+        print("LAYER 4 — MANIFEST GENERATION SKIPPED (Verification Failed)")
+        print(f"{'=' * 70}")
+        manifest_valid = True
+    else:
+        print("LAYER 4 — MANIFEST GENERATION")
+        print(f"{'=' * 70}")
+        generate_manifests()
 
     # ── Layer 5: Final Report + Summary ───────────────────────────────────
     write_master_report(results, _REPO_ROOT)
     print_summary(results)
 
-    print(f"\n{'=' * 70}")
-    print("MANIFEST INTERNAL VALIDATION")
-    print(f"{'=' * 70}")
-    manifest_valid = validate_manifests()
-
-    # ── Exit code ──────────────────────────────────────────────────────────
-    any_failed = any(r["final_status"] == "FAIL" for r in results)
-    any_review = any(r["final_status"] == "FOUNDER_REVIEW" for r in results)
+    if not any_failed:
+        print(f"\n{'=' * 70}")
+        print("MANIFEST INTERNAL VALIDATION")
+        print(f"{'=' * 70}")
+        manifest_valid = validate_manifests()
 
     if any_failed or not manifest_valid:
         print(
