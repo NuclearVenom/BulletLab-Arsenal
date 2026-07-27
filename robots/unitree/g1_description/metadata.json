@@ -62,6 +62,111 @@
       "entrypoint": "urdf/g1_29dof_with_hand_rev_1_0.urdf",
       "description": "Generated from g1_29dof_with_hand_rev_1_0.urdf",
       "default": false
+    },
+    {
+      "id": "g1_23dof_mode_10",
+      "display_name": "g1 23dof mode 10",
+      "entrypoint": "urdf/g1_23dof_mode_10.urdf",
+      "description": "Generated from g1_23dof_mode_10.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_lock_waist",
+      "display_name": "g1 29dof lock waist",
+      "entrypoint": "urdf/g1_29dof_lock_waist.urdf",
+      "description": "Generated from g1_29dof_lock_waist.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_lock_waist_rev_1_0",
+      "display_name": "g1 29dof lock waist rev 1 0",
+      "entrypoint": "urdf/g1_29dof_lock_waist_rev_1_0.urdf",
+      "description": "Generated from g1_29dof_lock_waist_rev_1_0.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_lock_waist_with_hand_rev_1_0",
+      "display_name": "g1 29dof lock waist with hand rev 1 0",
+      "entrypoint": "urdf/g1_29dof_lock_waist_with_hand_rev_1_0.urdf",
+      "description": "Generated from g1_29dof_lock_waist_with_hand_rev_1_0.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_mode_11",
+      "display_name": "g1 29dof mode 11",
+      "entrypoint": "urdf/g1_29dof_mode_11.urdf",
+      "description": "Generated from g1_29dof_mode_11.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_mode_12",
+      "display_name": "g1 29dof mode 12",
+      "entrypoint": "urdf/g1_29dof_mode_12.urdf",
+      "description": "Generated from g1_29dof_mode_12.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_mode_13",
+      "display_name": "g1 29dof mode 13",
+      "entrypoint": "urdf/g1_29dof_mode_13.urdf",
+      "description": "Generated from g1_29dof_mode_13.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_mode_14",
+      "display_name": "g1 29dof mode 14",
+      "entrypoint": "urdf/g1_29dof_mode_14.urdf",
+      "description": "Generated from g1_29dof_mode_14.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_mode_15",
+      "display_name": "g1 29dof mode 15",
+      "entrypoint": "urdf/g1_29dof_mode_15.urdf",
+      "description": "Generated from g1_29dof_mode_15.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_mode_15_with_dex1_1",
+      "display_name": "g1 29dof mode 15 with dex1 1",
+      "entrypoint": "urdf/g1_29dof_mode_15_with_dex1_1.urdf",
+      "description": "Generated from g1_29dof_mode_15_with_dex1_1.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_mode_16",
+      "display_name": "g1 29dof mode 16",
+      "entrypoint": "urdf/g1_29dof_mode_16.urdf",
+      "description": "Generated from g1_29dof_mode_16.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_rev_1_0_with_inspire_hand_DFQ",
+      "display_name": "g1 29dof rev 1 0 with inspire hand DFQ",
+      "entrypoint": "urdf/g1_29dof_rev_1_0_with_inspire_hand_DFQ.urdf",
+      "description": "Generated from g1_29dof_rev_1_0_with_inspire_hand_DFQ.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_29dof_rev_1_0_with_inspire_hand_FTP",
+      "display_name": "g1 29dof rev 1 0 with inspire hand FTP",
+      "entrypoint": "urdf/g1_29dof_rev_1_0_with_inspire_hand_FTP.urdf",
+      "description": "Generated from g1_29dof_rev_1_0_with_inspire_hand_FTP.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_comp",
+      "display_name": "g1 comp",
+      "entrypoint": "urdf/g1_comp.urdf",
+      "description": "Generated from g1_comp.urdf",
+      "default": false
+    },
+    {
+      "id": "g1_dual_arm",
+      "display_name": "g1 dual arm",
+      "entrypoint": "urdf/g1_dual_arm.urdf",
+      "description": "Generated from g1_dual_arm.urdf",
+      "default": false
     }
   ]
 }
