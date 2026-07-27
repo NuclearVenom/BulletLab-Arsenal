@@ -1,7 +1,11 @@
-# BulletLab Arsenal
+<h1>
+  <img src="https://raw.githubusercontent.com/NuclearVenom/BulletLab/main/docs/assets/logo.png" width="40" align="center" alt="[logo]">
+  BulletLab Arsenal
+</h1>
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+[![BulletLab](https://img.shields.io/badge/BulletLab-white?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDYgNjQ2Ij48cGF0aCBmaWxsPSIjMDAwIiBkPSJNMCAwSDE1M1Y0MEg0MFY2MDdIMTUzVjY0NkgwWk0yNDcgNzVIMzk5VjIyOUgzNjFWMzAzSDQ3NVYzODBINDM2VjM0MkgzNjFWNDUzSDQ3NVY1NzBINDM2VjQ5NUgyMTFWNTcwSDE3MVY0NTNIMjg1VjM0MkgyMTFWMzgwSDE3MVYzMDNIMjg1VjIyOUgyNDdaTTQ5MyAwSDY0NlY2NDZINDkzVjYwN0g2MDdWNDBINDkzWiIvPjwvc3ZnPg==)](https://github.com/NuclearVenom/BulletLab)
 
 **BulletLab Arsenal** is the official curated collection of verified robotics assets for the [BulletLab](https://github.com/NuclearVenom/BulletLab) robotics framework.
 
