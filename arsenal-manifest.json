@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T08:30:05.194638+00:00",
+  "generated_at": "2026-07-27T17:08:01.257844+00:00",
   "bulletlab_arsenal_version": "1",
   "total_package_count": 29,
   "robot_count": 29,
@@ -50,7 +50,7 @@
         ]
       },
       {
-        "package_name": "a1_description",
+        "package_name": "unitree/a1_description",
         "display_name": "A1 Description",
         "description": "The a1_description package",
         "version": "0.0.0",
@@ -75,7 +75,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -97,7 +97,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "a5_description",
+        "package_name": "unitree/a5_description",
         "display_name": "A5 Description",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -122,7 +122,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD. (Unitree Robotics)",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -138,7 +138,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "a7_description",
+        "package_name": "unitree/a7_description",
         "display_name": "A7 Description",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -163,7 +163,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -179,7 +179,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "aliengo_description",
+        "package_name": "unitree/aliengo_description",
         "display_name": "Aliengo Description",
         "description": "The aliengo_description package",
         "version": "0.0.0",
@@ -204,7 +204,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -226,7 +226,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "as2_description",
+        "package_name": "unitree/as2_description",
         "display_name": "As2 Description",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -249,7 +249,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD. (Unitree Robotics)",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -258,7 +258,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "b1_description",
+        "package_name": "unitree/b1_description",
         "display_name": "B1 Description",
         "description": "The b1_description package",
         "version": "0.0.0",
@@ -285,7 +285,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD. (Unitree Robotics)",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -307,7 +307,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "b2_description",
+        "package_name": "unitree/b2_description",
         "display_name": "B2 Description",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -333,7 +333,7 @@
         ],
         "contributors": [
           {
-            "name": "Unitree Robotics",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -355,7 +355,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "b2w_description",
+        "package_name": "unitree/b2w_description",
         "display_name": "B2W Description",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -381,7 +381,7 @@
         ],
         "contributors": [
           {
-            "name": "TODO",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -403,7 +403,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "dex1_1",
+        "package_name": "unitree/dex1_1",
         "display_name": "Dex1 1",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -424,7 +424,7 @@
         ],
         "contributors": [
           {
-            "name": "Unitree Robotics",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -440,7 +440,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "dex2_5",
+        "package_name": "unitree/dex2_5",
         "display_name": "Dex2 5",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -462,7 +462,7 @@
         ],
         "contributors": [
           {
-            "name": "Unitree Robotics",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -496,7 +496,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "dex3_1",
+        "package_name": "unitree/dex3_1",
         "display_name": "Dex3 1",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -519,7 +519,7 @@
         ],
         "contributors": [
           {
-            "name": "Unitree Robotics",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -541,7 +541,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "dex5_urdf_l",
+        "package_name": "unitree/dex5_urdf_l",
         "display_name": "Dex5 Urdf L",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -564,7 +564,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD. (Unitree Robotics)",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -580,7 +580,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "dex5_urdf_r",
+        "package_name": "unitree/dex5_urdf_r",
         "display_name": "Dex5 Urdf R",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -604,7 +604,7 @@
         ],
         "contributors": [
           {
-            "name": "Unitree Robotics",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -620,7 +620,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "g1_d_description",
+        "package_name": "unitree/g1_d_description",
         "display_name": "G1 D Description",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -643,7 +643,7 @@
         ],
         "contributors": [
           {
-            "name": "Unitree Robotics",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -659,7 +659,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "g1_description",
+        "package_name": "unitree/g1_description",
         "display_name": "G1 Description",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -682,7 +682,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -723,12 +723,102 @@
             "display_name": "g1 29dof with hand rev 1 0",
             "entrypoint": "urdf/g1_29dof_with_hand_rev_1_0.urdf",
             "verified": true
+          },
+          {
+            "id": "g1_23dof_mode_10",
+            "display_name": "g1 23dof mode 10",
+            "entrypoint": "urdf/g1_23dof_mode_10.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_29dof_lock_waist",
+            "display_name": "g1 29dof lock waist",
+            "entrypoint": "urdf/g1_29dof_lock_waist.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_29dof_lock_waist_rev_1_0",
+            "display_name": "g1 29dof lock waist rev 1 0",
+            "entrypoint": "urdf/g1_29dof_lock_waist_rev_1_0.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_29dof_lock_waist_with_hand_rev_1_0",
+            "display_name": "g1 29dof lock waist with hand rev 1 0",
+            "entrypoint": "urdf/g1_29dof_lock_waist_with_hand_rev_1_0.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_29dof_mode_11",
+            "display_name": "g1 29dof mode 11",
+            "entrypoint": "urdf/g1_29dof_mode_11.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_29dof_mode_12",
+            "display_name": "g1 29dof mode 12",
+            "entrypoint": "urdf/g1_29dof_mode_12.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_29dof_mode_13",
+            "display_name": "g1 29dof mode 13",
+            "entrypoint": "urdf/g1_29dof_mode_13.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_29dof_mode_14",
+            "display_name": "g1 29dof mode 14",
+            "entrypoint": "urdf/g1_29dof_mode_14.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_29dof_mode_15",
+            "display_name": "g1 29dof mode 15",
+            "entrypoint": "urdf/g1_29dof_mode_15.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_29dof_mode_15_with_dex1_1",
+            "display_name": "g1 29dof mode 15 with dex1 1",
+            "entrypoint": "urdf/g1_29dof_mode_15_with_dex1_1.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_29dof_mode_16",
+            "display_name": "g1 29dof mode 16",
+            "entrypoint": "urdf/g1_29dof_mode_16.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_29dof_rev_1_0_with_inspire_hand_DFQ",
+            "display_name": "g1 29dof rev 1 0 with inspire hand DFQ",
+            "entrypoint": "urdf/g1_29dof_rev_1_0_with_inspire_hand_DFQ.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_29dof_rev_1_0_with_inspire_hand_FTP",
+            "display_name": "g1 29dof rev 1 0 with inspire hand FTP",
+            "entrypoint": "urdf/g1_29dof_rev_1_0_with_inspire_hand_FTP.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_comp",
+            "display_name": "g1 comp",
+            "entrypoint": "urdf/g1_comp.urdf",
+            "verified": false
+          },
+          {
+            "id": "g1_dual_arm",
+            "display_name": "g1 dual arm",
+            "entrypoint": "urdf/g1_dual_arm.urdf",
+            "verified": false
           }
         ],
         "manufacturer": "unitree"
       },
       {
-        "package_name": "g1_with_brainco_hand",
+        "package_name": "unitree/g1_with_brainco_hand",
         "display_name": "G1 With Brainco Hand",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -752,7 +842,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -768,7 +858,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "go1_description",
+        "package_name": "unitree/go1_description",
         "display_name": "Go1 Description",
         "description": "The go1_description package",
         "version": "0.0.0",
@@ -795,7 +885,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -817,7 +907,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "go2_description",
+        "package_name": "unitree/go2_description",
         "display_name": "Go2 Description",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -842,7 +932,7 @@
         ],
         "contributors": [
           {
-            "name": "TODO",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -864,7 +954,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "go2w_description",
+        "package_name": "unitree/go2w_description",
         "display_name": "Go2W Description",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -889,7 +979,7 @@
         ],
         "contributors": [
           {
-            "name": "TODO",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -905,7 +995,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "h1_2_description",
+        "package_name": "unitree/h1_2_description",
         "display_name": "H1 2 Description",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -932,7 +1022,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -960,7 +1050,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "h1_description",
+        "package_name": "unitree/h1_description",
         "display_name": "H1 Description",
         "description": "The Unitree H1 Description Package",
         "version": "1.0.0",
@@ -986,7 +1076,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -1008,7 +1098,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "h2_description",
+        "package_name": "unitree/h2_description",
         "display_name": "H2 Description",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -1033,7 +1123,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -1055,7 +1145,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "h2_plus",
+        "package_name": "unitree/h2_plus",
         "display_name": "H2 Plus",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -1080,7 +1170,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -1096,7 +1186,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "inspire_hand",
+        "package_name": "unitree/inspire_hand",
         "display_name": "Inspire Hand",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -1119,7 +1209,7 @@
         ],
         "contributors": [
           {
-            "name": "Unitree Robotics",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -1153,7 +1243,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "laikago_description",
+        "package_name": "unitree/laikago_description",
         "display_name": "Laikago Description",
         "description": "The laikago_description package",
         "version": "0.0.0",
@@ -1179,7 +1269,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -1201,7 +1291,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "r1_air_description",
+        "package_name": "unitree/r1_air_description",
         "display_name": "R1 Air Description",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -1227,7 +1317,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD.",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -1243,7 +1333,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "r1_description",
+        "package_name": "unitree/r1_description",
         "display_name": "R1 Description",
         "description": "Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the robot joints. Please be aware that the Gazebo simulation cannot do high-level control, namely ",
         "version": "1.0.0",
@@ -1269,7 +1359,7 @@
         ],
         "contributors": [
           {
-            "name": "HangZhou YuShu TECHNOLOGY CO.,LTD. (Unitree Robotics)",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
@@ -1285,7 +1375,7 @@
         "manufacturer": "unitree"
       },
       {
-        "package_name": "z1_description",
+        "package_name": "unitree/z1_description",
         "display_name": "Z1 Description",
         "description": "The z1_description package",
         "version": "0.0.0",
@@ -1309,7 +1399,7 @@
         ],
         "contributors": [
           {
-            "name": "Unitree Robotics",
+            "name": "Ranasurya Ghosh",
             "github": null,
             "role": "original_submission"
           }
