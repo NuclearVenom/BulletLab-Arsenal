@@ -47,12 +47,6 @@ from arsenal_tools._core import (
 # Helpers
 # ---------------------------------------------------------------------------
 
-_SEP_WIDE  = "=" * 70
-_SEP_DASH  = "-" * 70
-
-# The directory that contains *this* file is the installed arsenal_tools
-# package.  The Arsenal repository's scripts/ sits one level above it when
-# installed with pip install -e .
 _INSTALLED_PKG_DIR = Path(__file__).resolve().parent
 _ARSENAL_REPO_ROOT_HINT = _INSTALLED_PKG_DIR.parent  # repo root in editable install
 
@@ -62,11 +56,11 @@ def _resolve_repo_root() -> Path:
     # Also try from the installed package location (editable install resolves to repo root).
     root = find_repo_root() or find_repo_root(_ARSENAL_REPO_ROOT_HINT)
     if root is None:
-        print(
-            "error: cannot locate the BulletLab Arsenal repository root.\n"
+        from verification import term as _t
+        _t.error(
+            "Cannot locate the BulletLab Arsenal repository root.\n"
             "Run this command from inside a cloned BulletLab Arsenal repository,\n"
-            "or ensure 'arsenal-manifest.json', 'scripts/', and 'robots/' are present.",
-            file=sys.stderr,
+            "or ensure 'arsenal-manifest.json', 'scripts/', and 'robots/' are present."
         )
         sys.exit(1)
     return root
@@ -129,55 +123,45 @@ def cmd_verify(args: argparse.Namespace) -> None:
     portable  = repo_root is None
 
     if portable:
-        # Bootstrap verification imports from the installed arsenal_tools
-        # package's sibling scripts/ directory (editable install layout).
         _bootstrap(_ARSENAL_REPO_ROOT_HINT)
     else:
         _bootstrap(repo_root)
 
     # Deferred imports (must come after bootstrap so sys.path is ready).
     from verification.registry import validate_package
+    from verification          import term
 
     # ── PORTABLE MODE ──────────────────────────────────────────────────────
     if portable:
-        print(f"\n{'─' * 70}")
-        print("BulletLab Arsenal — Portable Package Verification")
-        print(f"{'─' * 70}")
-        print(f"  Package   : {pkg_path}")
-        print(f"  Mode      : PORTABLE  (no Arsenal repository found in search path)")
-        print(f"  Skipping  : Layer 2 (identity), Layer 4 (manifest), Layer 5 (report)")
-        print(f"  Output    : {pkg_path / 'verification'}/")
-        print(f"{'─' * 70}")
+        term.header("BulletLab Arsenal — Portable Package Verification")
+        term.detail("Package",  str(pkg_path))
+        term.detail("Mode",     "PORTABLE  (no Arsenal repository found in search path)")
+        term.detail("Skipping", "Layer 2 (identity), Layer 4 (manifest), Layer 5 (report)")
+        term.detail("Output",   str(pkg_path / "verification") + "/")
 
         pkg_name = pkg_path.name
+        term.package_banner(pkg_name)
 
         # Layer 1
-        print(f"\n{'#' * 60}")
-        print(f"# Package: {pkg_name}")
-        print(f"{'#' * 60}")
-        print("\n[Layer 1] Registry Validation")
+        term.step("[Layer 1] Registry Validation")
         l1 = validate_package(pkg_path)
-        print(f"  Result : {'PASSED' if l1.passed else 'FAILED'}", end="")
-        if l1.review:
-            print("  (FOUNDER REVIEW REQUIRED)", end="")
-        print(f"\n  License: {l1.license_class}")
+        term.status_line("Result", l1.passed, l1.review)
+        term.detail("License", l1.license_class)
         if l1.errors:
-            print("  Errors:")
             for e in l1.errors:
-                print(f"    - {e}")
+                term.error(e)
         if l1.warnings:
-            print("  Warnings:")
             for w in l1.warnings:
-                print(f"    - {w}")
+                term.warn(w)
 
         if not l1.passed:
-            print("\nLayer 1 FAILED. Fix all errors before simulation.", file=sys.stderr)
+            term.error("Layer 1 FAILED. Fix all errors before simulation.")
             sys.exit(1)
 
         # Layer 3
         if not args.skip_simulation:
             from verification.robot import verify_robot
-            print(f"\n[Layer 3] BulletLab Verification")
+            term.step("[Layer 3] BulletLab Verification")
             try:
                 l2 = verify_robot(
                     package_dir=pkg_path,
@@ -185,29 +169,28 @@ def cmd_verify(args: argparse.Namespace) -> None:
                     screenshot_height=args.height,
                 )
             except RuntimeError as exc:
-                print(f"\nerror: {exc}", file=sys.stderr)
+                term.error(str(exc))
                 sys.exit(1)
-            l2_overall = l2.get("overall", "FAIL")
-            l2_passed  = l2.get("_passed", False)
-            print(f"  Result : {l2_overall}")
+            l2_passed = l2.get("_passed", False)
+            term.status_line("Result", l2_passed)
 
-            print(f"\n{'─' * 70}")
+            term.rule()
             if l1.review:
-                print("Status: FOUNDER REVIEW REQUIRED (license)")
+                term.warn("Status: FOUNDER REVIEW REQUIRED (license)")
                 sys.exit(2)
             if l2_passed:
-                print("Portable verification PASSED. "
-                      "Screenshots and report are inside the package's verification/ directory.")
+                term.info("Portable verification PASSED. "
+                          "Output is inside the package's verification/ directory.")
                 sys.exit(0)
             else:
-                print("Portable verification FAILED (simulation).", file=sys.stderr)
+                term.error("Portable verification FAILED (simulation).")
                 sys.exit(1)
         else:
-            print(f"\n{'─' * 70}")
+            term.rule()
             if l1.review:
-                print("Status: FOUNDER REVIEW REQUIRED (license)")
+                term.warn("Status: FOUNDER REVIEW REQUIRED (license)")
                 sys.exit(2)
-            print("Layer 1 PASSED. Simulation skipped (--skip-simulation).")
+            term.info("Layer 1 PASSED. Simulation skipped (--skip-simulation).")
             sys.exit(0)
 
     # ── FULL MODE ──────────────────────────────────────────────────────────
@@ -216,37 +199,32 @@ def cmd_verify(args: argparse.Namespace) -> None:
     from verification.report   import write_master_report
     from verification.summary  import print_summary
 
-    print(f"\nBulletLab Arsenal — Full Verification Pipeline")
-    print(f"  Package   : {pkg_path}")
-    print(f"  Repository: {repo_root}")
+    term.header("BulletLab Arsenal — Full Verification Pipeline")
+    term.detail("Package",    str(pkg_path))
+    term.detail("Repository", str(repo_root))
 
     # Layer 2: Identity (cross-package, runs once across full repo)
-    print(f"\n{_SEP_WIDE}")
-    print("LAYER 2 — REPOSITORY IDENTITY VALIDATION")
-    print(_SEP_WIDE)
+    term.header("Layer 2 — Repository Identity Validation")
     identity_result = validate_identity(repo_root)
     print_identity_report(identity_result)
 
     if not identity_result.passed:
-        print(
-            "\nPipeline ABORTED: Repository Identity Validation failed.\n"
-            "Fix all identity errors before proceeding to robot verification.",
-            file=sys.stderr,
+        term.error(
+            "Pipeline ABORTED: Repository Identity Validation failed.\n"
+            "Fix all identity errors before proceeding to robot verification."
         )
         sys.exit(1)
 
     # Layers 1 + 3: Per-package pipeline
     if args.skip_simulation:
         pkg_name = pkg_path.name
-        print(f"\n{'#' * 60}")
-        print(f"# Package: {pkg_name}  [simulation skipped]")
-        print(f"{'#' * 60}")
-        print("\n[Layer 1] Registry Validation")
+        term.package_banner(f"{pkg_name}  [simulation skipped]")
+        term.step("[Layer 1] Registry Validation")
         l1 = validate_package(pkg_path)
-        print(f"  Result: {'PASSED' if l1.passed else 'FAILED'}")
+        term.status_line("Result", l1.passed, l1.review)
         if l1.errors:
             for e in l1.errors:
-                print(f"    - {e}")
+                term.error(e)
         l1_dict = {
             "passed":        l1.passed,
             "review":        l1.review,
@@ -271,7 +249,7 @@ def cmd_verify(args: argparse.Namespace) -> None:
                 args.height,
             )
         except RuntimeError as exc:
-            print(f"\nerror: {exc}", file=sys.stderr)
+            term.error(str(exc))
             sys.exit(1)
         results = [result]
 
@@ -279,14 +257,12 @@ def cmd_verify(args: argparse.Namespace) -> None:
     any_review = any(r["final_status"] == "FOUNDER_REVIEW"  for r in results)
 
     # Layer 4: Manifest
-    print(f"\n{_SEP_WIDE}")
     if any_failed:
-        print("LAYER 4 — MANIFEST GENERATION SKIPPED")
-        print(_SEP_WIDE)
+        term.subheader("Layer 4 — Manifest Generation Skipped")
+        term.warn("Manifests are not updated when verification fails.")
         manifest_valid = True
     else:
-        print("LAYER 4 — MANIFEST GENERATION")
-        print(_SEP_WIDE)
+        term.header("Layer 4 — Manifest Generation")
         generate_manifests()
 
     # Layer 5: Report + Summary
@@ -294,22 +270,19 @@ def cmd_verify(args: argparse.Namespace) -> None:
     print_summary(results)
 
     if not any_failed:
-        print(f"\n{_SEP_WIDE}")
-        print("MANIFEST INTERNAL VALIDATION")
-        print(_SEP_WIDE)
+        term.header("Manifest Internal Validation")
         manifest_valid = validate_manifests()
 
     if any_failed or not manifest_valid:
-        print(
-            "\nPipeline FAILED. One or more packages did not pass verification, "
-            "or manifest validation failed.",
-            file=sys.stderr,
+        term.error(
+            "Pipeline FAILED. One or more packages did not pass verification "
+            "or manifest validation failed."
         )
         sys.exit(1)
 
     if any_review:
-        print(
-            "\nPipeline completed with FOUNDER REVIEW REQUIRED status. "
+        term.warn(
+            "Pipeline completed with FOUNDER REVIEW REQUIRED status. "
             "These packages cannot be auto-merged. A maintainer must review "
             "the license before the package can be accepted."
         )
@@ -347,76 +320,76 @@ def cmd_verify_all(args: argparse.Namespace) -> None:
     from verification.manifest   import generate_manifests, validate_manifests
     from verification.report     import write_master_report
     from verification.summary    import print_summary
+    from verification            import term
 
-    print(f"\nBulletLab Arsenal — Full Verification Pipeline (ALL)")
-    print(f"Packages to process: {len(pkg_dirs)}")
+    term.header("BulletLab Arsenal — Full Verification Pipeline (ALL)")
+    term.detail("Packages",   str(len(pkg_dirs)))
+    term.detail("Repository", str(repo_root))
 
-    print(f"\n{_SEP_WIDE}")
-    print("LAYER 2 — REPOSITORY IDENTITY VALIDATION")
-    print(_SEP_WIDE)
+    term.header("Layer 2 — Repository Identity Validation")
     identity_result = validate_identity(repo_root)
     print_identity_report(identity_result)
 
     if not identity_result.passed:
-        print(
-            "\nPipeline ABORTED: Repository Identity Validation failed.",
-            file=sys.stderr,
-        )
+        term.error("Pipeline ABORTED: Repository Identity Validation failed.")
         sys.exit(1)
 
     results: list[dict] = []
-    for pkg_dir in pkg_dirs:
-        if args.skip_simulation:
-            from verification.registry import validate_package
-            pkg_name = pkg_dir.name
-            print(f"\n{'#' * 60}")
-            print(f"# Package: {pkg_name}  [simulation skipped]")
-            print(f"{'#' * 60}")
-            l1 = validate_package(pkg_dir)
-            print(f"  Result: {'PASSED' if l1.passed else 'FAILED'}")
-            for e in l1.errors:
-                print(f"    - {e}")
-            l1_dict = {
-                "passed":        l1.passed,
-                "review":        l1.review,
-                "license_class": l1.license_class,
-                "errors":        l1.errors,
-                "warnings":      l1.warnings,
-            }
-            final = "FAIL" if not l1.passed else ("FOUNDER_REVIEW" if l1.review else "PASS")
-            results.append({"package": pkg_name, "layer1": l1_dict, "layer2": None, "final_status": final})
-        else:
-            r = mod.run_pipeline_for_package(pkg_dir, args.width, args.height)
-            results.append(r)
-
-    print(f"\n{_SEP_WIDE}")
-    print("LAYER 4 — MANIFEST GENERATION")
-    print(_SEP_WIDE)
-    generate_manifests()
-
-    write_master_report(results, repo_root)
-    print_summary(results)
-
-    print(f"\n{_SEP_WIDE}")
-    print("MANIFEST INTERNAL VALIDATION")
-    print(_SEP_WIDE)
-    manifest_valid = validate_manifests()
+    use_progress = len(pkg_dirs) > 1
+    with term.progress_context("Verifying packages", total=len(pkg_dirs) if use_progress else None) as advance:
+        for pkg_dir in pkg_dirs:
+            if args.skip_simulation:
+                from verification.registry import validate_package
+                pkg_name = pkg_dir.name
+                term.package_banner(f"{pkg_name}  [simulation skipped]")
+                l1 = validate_package(pkg_dir)
+                term.status_line("Result", l1.passed, l1.review)
+                for e in l1.errors:
+                    term.error(e)
+                l1_dict = {
+                    "passed":        l1.passed,
+                    "review":        l1.review,
+                    "license_class": l1.license_class,
+                    "errors":        l1.errors,
+                    "warnings":      l1.warnings,
+                }
+                final = "FAIL" if not l1.passed else ("FOUNDER_REVIEW" if l1.review else "PASS")
+                results.append({"package": pkg_name, "layer1": l1_dict, "layer2": None, "final_status": final})
+            else:
+                r = mod.run_pipeline_for_package(pkg_dir, args.width, args.height)
+                results.append(r)
+            advance()
 
     any_failed = any(r["final_status"] == "FAIL"            for r in results)
     any_review = any(r["final_status"] == "FOUNDER_REVIEW"  for r in results)
 
+    if any_failed:
+        term.subheader("Layer 4 — Manifest Generation Skipped")
+        term.warn("Manifests are not updated when verification fails.")
+        manifest_valid = True
+    else:
+        term.header("Layer 4 — Manifest Generation")
+        generate_manifests()
+
+    write_master_report(results, repo_root)
+    print_summary(results)
+
+    if not any_failed:
+        term.header("Manifest Internal Validation")
+        manifest_valid = validate_manifests()
+
     if any_failed or not manifest_valid:
-        print("\nPipeline FAILED.", file=sys.stderr)
+        term.error("Pipeline FAILED.")
         sys.exit(1)
 
     if any_review:
-        print(
-            "\nPipeline completed with FOUNDER REVIEW REQUIRED status. "
+        term.warn(
+            "Pipeline completed with FOUNDER REVIEW REQUIRED status. "
             "A maintainer must review flagged packages before they can be merged."
         )
         sys.exit(2)
 
-    print("\nAll packages passed the full verification pipeline.")
+    term.info("All packages passed the full verification pipeline.")
     sys.exit(0)
 
 
@@ -427,14 +400,13 @@ def cmd_validate(args: argparse.Namespace) -> None:
 
     from verification.identity import validate_identity, print_identity_report
     from verification.registry import validate_package
+    from verification          import term
 
-    print(f"\nBulletLab Arsenal — Validation (no simulation)")
-    print(f"Repository: {repo_root}")
+    term.header("BulletLab Arsenal — Validation (no simulation)")
+    term.detail("Repository", str(repo_root))
 
     # Always run identity validation across the full repo.
-    print(f"\n{_SEP_WIDE}")
-    print("LAYER 2 — REPOSITORY IDENTITY VALIDATION")
-    print(_SEP_WIDE)
+    term.header("Layer 2 — Repository Identity Validation")
     identity_result = validate_identity(repo_root)
     print_identity_report(identity_result)
 
@@ -445,7 +417,7 @@ def cmd_validate(args: argparse.Namespace) -> None:
     elif args.path:
         pkg_path = Path(args.path).resolve()
         if not pkg_path.is_dir():
-            print(f"error: package directory not found: {pkg_path}", file=sys.stderr)
+            term.error(f"Package directory not found: {pkg_path}")
             sys.exit(1)
         pkg_dirs = [pkg_path]
     else:
@@ -453,17 +425,15 @@ def cmd_validate(args: argparse.Namespace) -> None:
 
     any_failed = not identity_result.passed
     for pkg_dir in pkg_dirs:
-        print(f"\n[Layer 1] Registry Validation — {pkg_dir.name}")
+        term.step(f"[Layer 1] Registry Validation — {pkg_dir.name}")
         l1 = validate_package(pkg_dir)
-        status = "PASSED" if l1.passed else "FAILED"
-        if l1.review:
-            status = "FOUNDER REVIEW"
-        print(f"  Result : {status}")
-        print(f"  License: {l1.license_class}")
+        passed = l1.passed and not l1.review
+        term.status_line("Result", l1.passed, l1.review)
+        term.detail("License", l1.license_class)
         for e in l1.errors:
-            print(f"  ERROR  : {e}")
+            term.error(e)
         for w in l1.warnings:
-            print(f"  WARN   : {w}")
+            term.warn(w)
         if not l1.passed:
             any_failed = True
 
@@ -478,20 +448,19 @@ def cmd_manifest(_args: argparse.Namespace) -> None:
     _bootstrap(repo_root)
 
     from verification.manifest import generate_manifests, validate_manifests
+    from verification          import term
 
-    print(f"\nBulletLab Arsenal — Manifest Generation")
-    print(f"Repository: {repo_root}\n")
+    term.header("BulletLab Arsenal — Manifest Generation")
+    term.detail("Repository", str(repo_root))
     generate_manifests()
 
-    print(f"\n{_SEP_WIDE}")
-    print("MANIFEST INTERNAL VALIDATION")
-    print(_SEP_WIDE)
+    term.header("Manifest Internal Validation")
     ok = validate_manifests()
     if not ok:
-        print("error: manifest validation failed after generation.", file=sys.stderr)
+        term.error("Manifest validation failed after generation.")
         sys.exit(1)
 
-    print("Manifests regenerated and validated successfully.")
+    term.info("Manifests regenerated and validated successfully.")
     sys.exit(0)
 
 
@@ -499,9 +468,16 @@ def cmd_info(_args: argparse.Namespace) -> None:
     """Display BulletLab Arsenal installation and repository context."""
     repo_root = find_repo_root() or find_repo_root(_ARSENAL_REPO_ROOT_HINT)
 
-    print(f"\n{'─' * 50}")
+    try:
+        from verification import term as _term
+        _term_available = True
+    except ImportError:
+        _term_available = False
+
+    sep = "─" * 50
+    print(f"\n{sep}")
     print("  BulletLab Arsenal")
-    print(f"{'─' * 50}")
+    print(sep)
     print(f"  Arsenal Version   : {arsenal_tools.ARSENAL_VERSION}")
     print(f"  CLI Version       : {arsenal_tools.__version__}")
     print(f"  Schema Version    : {arsenal_tools.SCHEMA_VERSION}")
@@ -509,7 +485,7 @@ def cmd_info(_args: argparse.Namespace) -> None:
 
     if repo_root is None:
         print(f"\n  Repository Root   : (not found — run from inside the repository)")
-        print(f"{'─' * 50}\n")
+        print(f"{sep}\n")
         sys.exit(0)
 
     print(f"\n  Repository Root   : {repo_root}")
@@ -526,19 +502,19 @@ def cmd_info(_args: argparse.Namespace) -> None:
 
     # Live package counts
     counts = count_packages(repo_root)
-    total_pkgs  = sum(counts.values())
+    total_pkgs   = sum(counts.values())
     total_models = total_model_count(repo_root)
 
     print(f"\n  Packages by category:")
     max_cat = max(len(c) for c in CATEGORIES)
     for cat in CATEGORIES:
-        n = counts[cat]
+        n   = counts[cat]
         bar = ("·" * n) if n else "(none)"
         print(f"    {cat:<{max_cat}}  {n:>3}  {bar}")
 
     print(f"\n  Total packages    : {total_pkgs}")
     print(f"  Total models      : {total_models}")
-    print(f"{'─' * 50}\n")
+    print(f"{sep}\n")
     sys.exit(0)
 
 

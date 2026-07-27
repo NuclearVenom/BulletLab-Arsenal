@@ -1,8 +1,16 @@
 """
-robot.py — BulletLab Arsenal Layer 2 Robot Verification
+robot.py — BulletLab Arsenal Layer 3 Robot Verification
 
-This is the second layer of the two-layer quality pipeline.
-It answers: "Does every model in this package actually work in BulletLab?"
+This is the simulation verification layer.  It operates in one of two backends:
+
+  BulletLab backend (preferred)
+    Uses BulletLab's Simulation and Robot high-level wrappers.
+    Selected when `bulletlab` is importable.
+
+  PyBullet backend (automatic fallback)
+    Uses raw pybullet APIs directly.  Selected when BulletLab is unavailable
+    (e.g. Python 3.13+ where BulletLab's ImGui dependency is unsupported).
+    Verification quality is identical; only the runtime wrapper differs.
 """
 
 from __future__ import annotations
@@ -14,6 +22,11 @@ import zlib
 import json
 from datetime import datetime, timezone
 from pathlib import Path
+
+try:
+    from verification import term
+except ImportError:
+    from . import term  # type: ignore[no-redef]
 
 _PYBULLET_AVAILABLE = False
 try:
@@ -31,6 +44,9 @@ try:
     _BULLETLAB_AVAILABLE = True
 except ImportError:
     BULLETLAB_VERSION = "unknown"
+
+# Active backend label — set at first call to verify_robot()
+_ACTIVE_BACKEND: str | None = None
 
 CAMERA_VIEWS: list[tuple[str, float, float]] = [
     ("front",       0.0,   -20.0),
@@ -323,29 +339,219 @@ def _verify_model(
     finally:
         sim.stop()
 
+def _verify_model_pybullet(
+    pkg_dir: Path,
+    model: dict,
+    screenshots_dir: Path,
+    width: int,
+    height: int,
+) -> dict:
+    """Pure-PyBullet verification path — used when BulletLab is unavailable.
+
+    Functionally identical to _verify_model(); uses p.connect/loadURDF directly
+    instead of BulletLab's Simulation/Robot wrappers.
+    """
+    model_id   = model.get("id", "unknown")
+    entrypoint = model.get("entrypoint", "")
+    urdf_path  = pkg_dir / entrypoint
+
+    result: dict = {
+        "model_id":           model_id,
+        "model_display_name": model.get("display_name", model_id),
+        "entrypoint":         entrypoint,
+        "loading":            {},
+        "placement":          {},
+        "dimensions_meters":  {},
+        "links":              [],
+        "joints":             [],
+        "joint_exercise":     [],
+        "stability":          {},
+        "screenshots":        [],
+        "summary":            {},
+    }
+
+    if not urdf_path.is_file():
+        result["loading"] = {"status": "FAIL", "error": f"URDF not found: {entrypoint}"}
+        result["summary"] = {"overall": "FAIL"}
+        return result
+
+    client_id = p.connect(p.DIRECT)
+    try:
+        p.setGravity(0.0, 0.0, 0.0, physicsClientId=client_id)
+        p.setTimeStep(1.0 / 240.0, physicsClientId=client_id)
+
+        try:
+            body_id = p.loadURDF(
+                str(urdf_path),
+                basePosition=[0.0, 0.0, 0.0],
+                useFixedBase=False,
+                physicsClientId=client_id,
+            )
+        except Exception as exc:
+            result["loading"] = {
+                "status":    "FAIL",
+                "error":     str(exc),
+                "traceback": traceback.format_exc(),
+            }
+            result["summary"] = {"overall": "FAIL"}
+            return result
+
+        result["loading"] = {"status": "PASS"}
+
+        for _ in range(10):
+            p.stepSimulation(physicsClientId=client_id)
+
+        aabb_min, aabb_max = _full_aabb(body_id, client_id)
+        if _has_nan(aabb_min + aabb_max):
+            result["loading"] = {"status": "FAIL",
+                                  "error": "AABB contains NaN immediately after load"}
+            result["summary"] = {"overall": "FAIL"}
+            return result
+
+        lift    = -aabb_min[2] + PLACEMENT_MARGIN
+        pos, orn = p.getBasePositionAndOrientation(body_id, physicsClientId=client_id)
+        new_pos  = (pos[0], pos[1], pos[2] + lift)
+        p.resetBasePositionAndOrientation(body_id, list(new_pos), list(orn),
+                                          physicsClientId=client_id)
+        aabb_min, aabb_max = _full_aabb(body_id, client_id)
+
+        wx  = round(aabb_max[0] - aabb_min[0], 4)
+        dy  = round(aabb_max[1] - aabb_min[1], 4)
+        hz  = round(aabb_max[2] - aabb_min[2], 4)
+        cx  = (aabb_min[0] + aabb_max[0]) / 2
+        cy  = (aabb_min[1] + aabb_max[1]) / 2
+        cz  = (aabb_min[2] + aabb_max[2]) / 2
+        target   = [cx, cy, cz]
+        cam_dist = max(1.0, math.sqrt(wx**2 + dy**2 + hz**2) * 2.5)
+
+        result["placement"]         = {"final_base_position": list(new_pos),
+                                        "lift_applied_meters": round(lift, 6)}
+        result["dimensions_meters"] = {"width_x": wx, "depth_y": dy, "height_z": hz}
+
+        body_info = p.getBodyInfo(body_id, physicsClientId=client_id)
+        base_name = (body_info[0].decode("utf-8")
+                     if isinstance(body_info[0], bytes) else str(body_info[0]))
+        links = [{"name": base_name, "index": -1, "parent": None}]
+        n_joints = p.getNumJoints(body_id, physicsClientId=client_id)
+        for i in range(n_joints):
+            jinfo = p.getJointInfo(body_id, i, physicsClientId=client_id)
+            lname = (jinfo[12].decode("utf-8")
+                     if isinstance(jinfo[12], bytes) else str(jinfo[12]))
+            pidx  = jinfo[16]
+            if pidx == -1:
+                pname = base_name
+            else:
+                pinfo = p.getJointInfo(body_id, pidx, physicsClientId=client_id)
+                pname = (pinfo[12].decode("utf-8")
+                         if isinstance(pinfo[12], bytes) else str(pinfo[12]))
+            links.append({"name": lname, "index": i, "parent": pname})
+        result["links"] = links
+
+        JTYPE = {
+            p.JOINT_REVOLUTE:  "revolute",
+            p.JOINT_PRISMATIC: "prismatic",
+            p.JOINT_SPHERICAL: "spherical",
+            p.JOINT_PLANAR:    "planar",
+            p.JOINT_FIXED:     "fixed",
+        }
+        joints = []
+        for i in range(n_joints):
+            jinfo = p.getJointInfo(body_id, i, physicsClientId=client_id)
+            jname = (jinfo[1].decode("utf-8")
+                     if isinstance(jinfo[1], bytes) else str(jinfo[1]))
+            joints.append({
+                "name":        jname,
+                "index":       i,
+                "type":        JTYPE.get(jinfo[2], f"unknown({jinfo[2]})"),
+                "lower_limit": float(jinfo[8]),
+                "upper_limit": float(jinfo[9]),
+                "max_force":   float(jinfo[10]),
+                "max_velocity":float(jinfo[11]),
+            })
+        result["joints"] = joints
+
+        ex_results = []
+        for ji in joints:
+            if ji["type"] in ("revolute", "prismatic"):
+                ex_results.append(
+                    _exercise_joint(body_id, ji["index"], ji, client_id)
+                )
+        result["joint_exercise"] = ex_results
+        ex_failures = [r for r in ex_results if r.get("status") == "FAIL"]
+
+        ab_min, ab_max = _full_aabb(body_id, client_id)
+        for _ in range(STABILITY_STEPS):
+            p.stepSimulation(physicsClientId=client_id)
+        aa_min, aa_max = _full_aabb(body_id, client_id)
+        nan_det      = _has_nan(ab_min + ab_max + aa_min + aa_max)
+        stability_ok = not nan_det
+        result["stability"] = {
+            "steps_run":   STABILITY_STEPS,
+            "nan_detected": nan_det,
+            "status":      "PASS" if stability_ok else "FAIL",
+        }
+
+        model_screens_dir = screenshots_dir / model_id
+        screen_records    = []
+        for view_name, yaw, pitch in CAMERA_VIEWS:
+            out_png = model_screens_dir / f"{view_name}.png"
+            try:
+                rec = _render(client_id, view_name, yaw, pitch, target,
+                              cam_dist, out_png, width, height)
+                screen_records.append(rec)
+            except Exception as exc:
+                screen_records.append({"view": view_name, "path": None,
+                                       "error": str(exc)})
+        result["screenshots"] = screen_records
+
+        loading_ok    = result["loading"]["status"] == "PASS"
+        stability_ok2 = result["stability"]["status"] == "PASS"
+        exercise_ok   = len(ex_failures) == 0
+        overall       = loading_ok and stability_ok2 and exercise_ok
+
+        result["summary"] = {
+            "loading":        "PASS" if loading_ok    else "FAIL",
+            "stability":      "PASS" if stability_ok2 else "FAIL",
+            "joint_exercise": "PASS" if exercise_ok   else "FAIL",
+            "overall":        "PASS" if overall        else "FAIL",
+        }
+
+    finally:
+        p.disconnect(client_id)
+
     return result
+
 
 def verify_robot(
     package_dir: Path,
     screenshot_width: int = 1920,
     screenshot_height: int = 1080,
 ) -> dict:
-    pkg_name = package_dir.name
-    metadata_path = package_dir / "metadata.json"
+    pkg_name         = package_dir.name
+    metadata_path    = package_dir / "metadata.json"
     verification_dir = package_dir / "verification"
-    screenshots_dir = verification_dir / "screenshots"
+    screenshots_dir  = verification_dir / "screenshots"
 
-    if not _BULLETLAB_AVAILABLE or not _PYBULLET_AVAILABLE:
-        missing = []
-        if not _BULLETLAB_AVAILABLE:
-            missing.append("bulletlab")
-        if not _PYBULLET_AVAILABLE:
-            missing.append("pybullet")
+    # ── Backend selection ─────────────────────────────────────────────────────
+    if not _PYBULLET_AVAILABLE:
         raise RuntimeError(
-            f"Layer 3 (BulletLab simulation) requires: {', '.join(missing)}.\n"
-            "Install with:  pip install bulletlab pybullet\n"
-            "Or skip simulation with:  arsenal verify <path> --skip-simulation"
+            "Layer 3 (simulation) requires pybullet.\n"
+            "Install with:  pip install pybullet\n"
+            "Or skip with:  arsenal verify <path> --skip-simulation"
         )
+
+    use_pybullet_fallback = not _BULLETLAB_AVAILABLE
+
+    if use_pybullet_fallback:
+        term.backend_notice([
+            "BulletLab unavailable for this Python version.",
+            "Falling back to the PyBullet verification backend.",
+            "Verification quality is unaffected; only the runtime backend has changed.",
+        ])
+        backend_label = "pybullet"
+    else:
+        backend_label = "bulletlab"
+
 
     if not metadata_path.is_file():
         return {"_passed": False, "package": pkg_name,
@@ -362,29 +568,36 @@ def verify_robot(
     verification_dir.mkdir(parents=True, exist_ok=True)
     screenshots_dir.mkdir(parents=True, exist_ok=True)
 
+    _verify_fn = _verify_model_pybullet if use_pybullet_fallback else _verify_model
+
+    bl_ver = BULLETLAB_VERSION if not use_pybullet_fallback else "N/A (pybullet fallback)"
+
     package_report: dict = {
-        "package": pkg_name,
+        "package":                pkg_name,
         "verification_timestamp": datetime.now(timezone.utc).isoformat(),
-        "bulletlab_version": BULLETLAB_VERSION,
-        "models": [],
+        "bulletlab_version":       bl_ver,
+        "backend":                 backend_label,
+        "models":                  [],
     }
 
     all_passed = True
 
-    for model_spec in models_spec:
-        model_result = _verify_model(
-            pkg_dir=package_dir,
-            model=model_spec,
-            screenshots_dir=screenshots_dir,
-            width=screenshot_width,
-            height=screenshot_height,
-        )
+    with term.progress_context(f"Verifying models in {pkg_name}", total=len(models_spec)) as advance:
+        for model_spec in models_spec:
+            model_result = _verify_fn(
+                pkg_dir=package_dir,
+                model=model_spec,
+                screenshots_dir=screenshots_dir,
+                width=screenshot_width,
+                height=screenshot_height,
+            )
 
-        overall = model_result.get("summary", {}).get("overall", "FAIL")
-        if overall != "PASS":
-            all_passed = False
+            overall = model_result.get("summary", {}).get("overall", "FAIL")
+            if overall != "PASS":
+                all_passed = False
 
-        package_report["models"].append(model_result)
+            package_report["models"].append(model_result)
+            advance()
 
     package_report["_passed"] = all_passed
     package_report["overall"] = "PASS" if all_passed else "FAIL"

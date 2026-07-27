@@ -529,27 +529,8 @@ def validate_identity(repo_root: Path) -> IdentityResult:
 
 def print_identity_report(result: IdentityResult) -> None:
     """Print a structured, human-readable identity validation report."""
-    status_label = "PASS" if result.passed else "FAIL"
-    print(f"\n{'=' * 70}")
-    print(f"REPOSITORY IDENTITY VALIDATION  [{status_label}]")
-    print(f"{'=' * 70}")
-
-    # Check-level summary
-    _ICONS = {"PASS": "✓", "WARN": "⚠", "FAIL": "✗"}
-    for check, status in result.checks.items():
-        icon = _ICONS.get(status, "?")
-        print(f"  {icon} {check}")
-
-    if result.warnings:
-        print(f"\n  Warnings ({len(result.warnings)}):")
-        for w in result.warnings:
-            for line in w.splitlines():
-                print(f"    ⚠  {line}")
-
-    if result.errors:
-        print(f"\n  Errors ({len(result.errors)}):")
-        for e in result.errors:
-            for line in e.splitlines():
-                print(f"    ✗  {line}")
-
-    print(f"{'=' * 70}")
+    try:
+        from verification import term as _term
+    except ImportError:
+        from . import term as _term  # type: ignore[no-redef]
+    _term.identity_report(result)

@@ -12,6 +12,11 @@ import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
+try:
+    from verification import term
+except ImportError:
+    from . import term  # type: ignore[no-redef]
+
 _SCRIPTS_DIR = Path(__file__).resolve().parent.parent
 _REPO_ROOT = _SCRIPTS_DIR.parent
 
@@ -116,7 +121,7 @@ def generate_category_manifest(category_dir: Path) -> dict:
                 with open(meta_path, "r", encoding="utf-8") as f:
                     meta = json.load(f)
             except Exception as e:
-                print(f"Warning: Could not read metadata for {item.name}: {e}")
+                term.warn(f"Could not read metadata for {item.name}: {e}")
                 continue
 
             pkg_name = meta.get("name", item.name)
@@ -180,7 +185,7 @@ def generate_category_manifest(category_dir: Path) -> dict:
         with open(manifest_path, "w", encoding="utf-8") as f:
             json.dump(manifest_data, f, indent=2)
             f.write("\n")
-        print(f"Generated manifest for {category_dir.name} with {len(packages)} packages.")
+        term.info(f"Generated {category_dir.name} manifest  ({len(packages)} packages)")
         
     return manifest_data
 
@@ -212,26 +217,26 @@ def generate_global_manifest(category_data: dict[str, dict]) -> None:
     with open(global_path, "w", encoding="utf-8") as f:
         json.dump(global_data, f, indent=2)
         f.write("\n")
-    print(f"Generated global arsenal-manifest.json with {total_count} total packages.")
+    term.info(f"Generated arsenal-manifest.json  ({total_count} total packages)")
 
 
 def generate_manifests() -> None:
-    print("Generating BulletLab Arsenal Manifests...")
+    term.step("Generating BulletLab Arsenal manifests ...")
     category_data = {}
     for category in CATEGORIES:
         category_dir = _REPO_ROOT / category
         if category_dir.exists():
             data = generate_category_manifest(category_dir)
             category_data[category] = data
-            
+
     generate_global_manifest(category_data)
-    print("Manifest generation complete.")
+    term.info("Manifest generation complete.")
 
 def validate_manifests() -> bool:
-    """Validate internal consistency of manifests (stub implementation from original)."""
-    # Simply check if the global manifest was written successfully.
+    """Validate internal consistency of manifests."""
     global_path = _REPO_ROOT / "arsenal-manifest.json"
     if not global_path.is_file():
-        print("ERROR: Global manifest is missing.")
+        term.error("Global manifest is missing.")
         return False
+    term.info("Manifest validation passed.")
     return True

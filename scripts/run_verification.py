@@ -45,10 +45,11 @@ sys.path.insert(0, str(_SCRIPTS_DIR))
 
 from verification.registry import validate_package, PackageResult
 from verification.identity import validate_identity, print_identity_report
-from verification.robot import verify_robot
+from verification.robot    import verify_robot
 from verification.manifest import generate_manifests, validate_manifests
-from verification.report import write_master_report
-from verification.summary import print_summary
+from verification.report   import write_master_report
+from verification.summary  import print_summary
+from verification          import term
 
 _REPO_ROOT  = _SCRIPTS_DIR.parent
 _ROBOTS_DIR = _REPO_ROOT / "robots"
@@ -71,27 +72,21 @@ def run_pipeline_for_package(
       final_status    — 'PASS' | 'FAIL' | 'FOUNDER_REVIEW'
     """
     pkg_name = pkg_dir.name
-    print(f"\n{'#' * 60}")
-    print(f"# Package: {pkg_name}")
-    print(f"{'#' * 60}")
+    term.package_banner(pkg_name)
 
     # ── Layer 1: Registry Validation ──────────────────────────────────────
-    print("\n[Layer 1] Registry Validation")
+    term.step("[Layer 1] Registry Validation")
     l1: PackageResult = validate_package(pkg_dir)
 
-    print(f"  Result: {'PASSED' if l1.passed else 'FAILED'}", end="")
-    if l1.review:
-        print("  (FOUNDER REVIEW REQUIRED)", end="")
-    print(f"\n  License: {l1.license_class}")
+    term.status_line("Result", l1.passed, l1.review)
+    term.detail("License", l1.license_class)
 
     if l1.errors:
-        print("  Errors:")
         for e in l1.errors:
-            print(f"    - {e}")
+            term.error(e)
     if l1.warnings:
-        print("  Warnings:")
         for w in l1.warnings:
-            print(f"    - {w}")
+            term.warn(w)
 
     l1_dict = {
         "passed":        l1.passed,
@@ -109,8 +104,8 @@ def run_pipeline_for_package(
             "final_status": "FAIL",
         }
 
-    # ── Layer 3: Robot Verification ────────────────────────────────────────
-    print("\n[Layer 3] BulletLab Verification")
+    # ── Layer 3: Robot Verification ──────────────────────────────────────
+    term.step("[Layer 3] BulletLab Verification")
     l2 = verify_robot(
         package_dir=pkg_dir,
         screenshot_width=screenshot_width,
@@ -119,7 +114,7 @@ def run_pipeline_for_package(
 
     l2_passed  = l2.get("_passed", False)
     l2_overall = l2.get("overall", "FAIL")
-    print(f"  Result: {l2_overall}")
+    term.status_line("Result", l2_passed)
 
     l2_dict = {k: v for k, v in l2.items() if not k.startswith("_")}
 
@@ -180,109 +175,105 @@ def main() -> None:
 
     if args.all:
         if not _ROBOTS_DIR.exists():
-            print(f"ERROR: robots/ directory not found at {_ROBOTS_DIR}")
+            term.error(f"ERROR: robots/ directory not found at {_ROBOTS_DIR}")
             sys.exit(1)
         pkg_dirs = sorted(p.parent for p in _ROBOTS_DIR.rglob("metadata.json") if p.parent.is_dir())
         if not pkg_dirs:
-            print("No robot packages found under robots/.")
+            term.warn("No robot packages found under robots/.")
             sys.exit(0)
     else:
         pkg_dirs = [Path(args.package).resolve()]
         if not pkg_dirs[0].is_dir():
-            print(f"ERROR: Package directory not found: {pkg_dirs[0]}")
+            term.error(f"ERROR: Package directory not found: {pkg_dirs[0]}")
             sys.exit(1)
 
-    print(f"\nBulletLab Arsenal — Full Verification Pipeline")
-    print(f"Packages to process: {len(pkg_dirs)}")
+    term.header("BulletLab Arsenal — Full Verification Pipeline")
+    term.detail("Packages", str(len(pkg_dirs)))
+    term.detail("Repository", str(_REPO_ROOT))
 
-    # ── Layer 2: Repository Identity Validation (cross-package, runs once) ─
-    print(f"\n{'=' * 70}")
-    print("LAYER 2 — REPOSITORY IDENTITY VALIDATION")
-    print(f"{'=' * 70}")
+    # ── Layer 2: Repository Identity Validation (cross-package, runs once) ─────
+    term.header("Layer 2 — Repository Identity Validation")
     identity_result = validate_identity(_REPO_ROOT)
-    print_identity_report(identity_result)
+    term.identity_report(identity_result)
 
     if not identity_result.passed:
-        print(
-            "\nPipeline ABORTED: Repository Identity Validation failed.\n"
+        term.error(
+            "Pipeline ABORTED: Repository Identity Validation failed.\n"
             "Fix all identity errors before proceeding to robot verification."
         )
         sys.exit(1)
 
     # ── Layers 1 + 3: Per-package Registry + Robot Verification ───────────
     results: list[dict] = []
-    for pkg_dir in pkg_dirs:
-        if args.skip_simulation:
-            # Run Layer 1 only
-            pkg_name = pkg_dir.name
-            print(f"\n{'#' * 60}")
-            print(f"# Package: {pkg_name}  [simulation skipped]")
-            print(f"{'#' * 60}")
-            print("\n[Layer 1] Registry Validation")
-            from verification.registry import validate_package as _vp
-            l1 = _vp(pkg_dir)
-            print(f"  Result: {'PASSED' if l1.passed else 'FAILED'}")
-            if l1.errors:
-                for e in l1.errors:
-                    print(f"    - {e}")
-            l1_dict = {
-                "passed":        l1.passed,
-                "review":        l1.review,
-                "license_class": l1.license_class,
-                "errors":        l1.errors,
-                "warnings":      l1.warnings,
-            }
-            final = "FAIL" if not l1.passed else ("FOUNDER_REVIEW" if l1.review else "PASS")
-            results.append({
-                "package":      pkg_name,
-                "layer1":       l1_dict,
-                "layer2":       None,
-                "final_status": final,
-            })
-        else:
-            r = run_pipeline_for_package(pkg_dir, args.width, args.height)
-            results.append(r)
+    use_progress = len(pkg_dirs) > 1
+
+    with term.progress_context("Verifying packages", total=len(pkg_dirs) if use_progress else None) as advance:
+        for pkg_dir in pkg_dirs:
+            if args.skip_simulation:
+                pkg_name = pkg_dir.name
+                term.package_banner(f"{pkg_name}  [simulation skipped]")
+                term.step("[Layer 1] Registry Validation")
+                from verification.registry import validate_package as _vp
+                l1 = _vp(pkg_dir)
+                term.status_line("Result", l1.passed, l1.review)
+                if l1.errors:
+                    for e in l1.errors:
+                        term.error(e)
+                l1_dict = {
+                    "passed":        l1.passed,
+                    "review":        l1.review,
+                    "license_class": l1.license_class,
+                    "errors":        l1.errors,
+                    "warnings":      l1.warnings,
+                }
+                final = "FAIL" if not l1.passed else ("FOUNDER_REVIEW" if l1.review else "PASS")
+                results.append({
+                    "package":      pkg_name,
+                    "layer1":       l1_dict,
+                    "layer2":       None,
+                    "final_status": final,
+                })
+            else:
+                r = run_pipeline_for_package(pkg_dir, args.width, args.height)
+                results.append(r)
+            advance()
 
     any_failed = any(r["final_status"] == "FAIL" for r in results)
     any_review = any(r["final_status"] == "FOUNDER_REVIEW" for r in results)
 
-    # ── Layer 4: Manifest Generation ──────────────────────────────────────
-    print(f"\n{'=' * 70}")
+    # ── Layer 4: Manifest Generation ─────────────────────────────────────────
     if any_failed:
-        print("LAYER 4 — MANIFEST GENERATION SKIPPED (Verification Failed)")
-        print(f"{'=' * 70}")
+        term.subheader("Layer 4 — Manifest Generation Skipped")
+        term.warn("Manifests are not updated when verification fails.")
         manifest_valid = True
     else:
-        print("LAYER 4 — MANIFEST GENERATION")
-        print(f"{'=' * 70}")
+        term.header("Layer 4 — Manifest Generation")
         generate_manifests()
 
     # ── Layer 5: Final Report + Summary ───────────────────────────────────
     write_master_report(results, _REPO_ROOT)
-    print_summary(results)
+    term.summary_table(results)
 
     if not any_failed:
-        print(f"\n{'=' * 70}")
-        print("MANIFEST INTERNAL VALIDATION")
-        print(f"{'=' * 70}")
+        term.header("Manifest Internal Validation")
         manifest_valid = validate_manifests()
 
     if any_failed or not manifest_valid:
-        print(
-            "\nPipeline FAILED. One or more packages did not pass verification, "
+        term.error(
+            "Pipeline FAILED. One or more packages did not pass verification "
             "or manifest validation failed."
         )
         sys.exit(1)
 
     if any_review:
-        print(
-            "\nPipeline completed with FOUNDER REVIEW REQUIRED status. "
+        term.warn(
+            "Pipeline completed with FOUNDER REVIEW REQUIRED status. "
             "These packages cannot be auto-merged. A maintainer must review "
             "the license before the package can be accepted."
         )
         sys.exit(2)
 
-    print("\nAll packages passed the full verification pipeline.")
+    term.info("All packages passed the full verification pipeline.")
     sys.exit(0)
 
 

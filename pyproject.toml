@@ -44,6 +44,9 @@ dependencies = []
 simulation = [
     "pybullet>=3.2",
 ]
+ui = [
+    "rich>=13",
+]
 
 [project.scripts]
 arsenal = "arsenal_tools.cli:main"
