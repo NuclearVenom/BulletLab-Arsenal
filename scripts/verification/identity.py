@@ -78,6 +78,7 @@ class PackageInfo(NamedTuple):
     display_name: str      # metadata["display_name"]
     category: str          # parent category directory name
     pkg_dir: Path          # absolute path to the package directory
+    rel_path: str          # relative path from the category directory
     models: list[dict]     # raw model list from metadata.json
 
 
@@ -105,7 +106,7 @@ class IdentityResult:
 
 # ── Internal helpers ───────────────────────────────────────────────────────────
 
-def _load_package_info(pkg_dir: Path, category: str) -> PackageInfo | None:
+def _load_package_info(pkg_dir: Path, category: str, cat_dir: Path) -> PackageInfo | None:
     """Read metadata.json and return a PackageInfo, or None on parse error."""
     meta_path = pkg_dir / "metadata.json"
     if not meta_path.is_file():
@@ -115,11 +116,18 @@ def _load_package_info(pkg_dir: Path, category: str) -> PackageInfo | None:
             meta = json.load(fh)
     except (json.JSONDecodeError, OSError):
         return None
+    
+    try:
+        rel_path = pkg_dir.relative_to(cat_dir).as_posix()
+    except ValueError:
+        rel_path = pkg_dir.name
+
     return PackageInfo(
         name=meta.get("name", ""),
         display_name=meta.get("display_name", ""),
         category=category,
         pkg_dir=pkg_dir,
+        rel_path=rel_path,
         models=meta.get("models", []),
     )
 
@@ -131,10 +139,9 @@ def _discover_packages(repo_root: Path) -> list[PackageInfo]:
         cat_dir = repo_root / cat
         if not cat_dir.is_dir():
             continue
-        for item in sorted(cat_dir.iterdir()):
-            if not item.is_dir():
-                continue
-            info = _load_package_info(item, cat)
+        for meta_path in cat_dir.rglob("metadata.json"):
+            item = meta_path.parent
+            info = _load_package_info(item, cat, cat_dir)
             if info is not None:
                 infos.append(info)
     return infos
@@ -188,7 +195,7 @@ def _check_name_matches_folder(info: PackageInfo, result: IdentityResult) -> Non
     if info.name != folder_name:
         result.fail(
             "Metadata name ↔ folder",
-            f"[{info.category}/{folder_name}] metadata 'name' is '{info.name}' "
+            f"[{info.category}/{info.rel_path}] metadata 'name' is '{info.name}' "
             f"but the directory is named '{folder_name}'. They must be identical.",
         )
     else:
@@ -334,8 +341,8 @@ def _check_global_namespace(packages: list[PackageInfo], result: IdentityResult)
     # Global namespace: names must be unique across ALL categories
     global_name_map: dict[str, list[str]] = defaultdict(list)
     for info in packages:
-        if info.name:
-            global_name_map[info.name].append(f"{info.category}/{info.name}")
+        if info.rel_path:
+            global_name_map[info.rel_path].append(f"{info.category}/{info.rel_path}")
 
     for name, locations in global_name_map.items():
         if len(locations) == 1:
@@ -350,7 +357,7 @@ def _check_global_namespace(packages: list[PackageInfo], result: IdentityResult)
     # Category-level folder name uniqueness (explicit, even if filesystem prevents it)
     category_map: dict[str, dict[str, list[str]]] = defaultdict(lambda: defaultdict(list))
     for info in packages:
-        folder = info.pkg_dir.name
+        folder = info.rel_path
         category_map[info.category][folder].append(str(info.pkg_dir))
 
     for cat, folder_map in category_map.items():
@@ -391,8 +398,8 @@ def _check_install_namespace(packages: list[PackageInfo], result: IdentityResult
     """Check 10 — Simulate future install API; every name must resolve unambiguously."""
     registry: dict[str, list[str]] = defaultdict(list)
     for info in packages:
-        if info.name:
-            registry[info.name].append(f"{info.category}/{info.name}")
+        if info.rel_path:
+            registry[info.rel_path].append(f"{info.category}/{info.rel_path}")
 
     ambiguous = False
     for name, destinations in registry.items():
@@ -415,7 +422,7 @@ def _check_manifest_consistency(
 ) -> None:
     """Check 11 — Validate generated manifests match on-disk state."""
     # Build the expected set of (category, package_name) from live discovery
-    expected: set[tuple[str, str]] = {(p.category, p.name) for p in packages if p.name}
+    expected: set[tuple[str, str]] = {(p.category, p.rel_path) for p in packages if p.rel_path}
 
     # Check global manifest
     global_manifest_path = repo_root / "arsenal-manifest.json"

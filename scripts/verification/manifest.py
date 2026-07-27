@@ -124,7 +124,10 @@ def generate_category_manifest(category_dir: Path) -> dict:
                 term.warn(f"Could not read metadata for {item.name}: {e}")
                 continue
 
-            pkg_name = meta.get("name", item.name)
+            # Use the relative path from the category directory as the package identifier
+            rel_to_cat = item.relative_to(category_dir)
+            pkg_name = rel_to_cat.as_posix()
+            
             pkg_verified, models_verified = _get_verified_status(item)
             
             # Fetch contributors from Git history
